@@ -1,9 +1,56 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- head definitions go here -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div class="container">
+            <div class="row justify-content-md-center text-center">
+              <div class="col-8">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                      <h1 class="display-4">Welcome to SQL Murder Mystery!</h1>
+                      <p class="lead">Can you figure out who murdered Tony Stark?</p>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            <div class="row justify-content-md-center">
+              <div class="col-8">
+
+                <h2>Background</h2>
+                <p>
+                    Your best friend and boss of 5 years, Tony Stark, has just been found dead in the office break room right next to the coffee machine. Unfortunately, the police don’t have any suspects and the case has gone cold. However, you think that one of your coworkers must be responsible. In order to see who's had access to the breakroom, you know you'll have to break into the secret employee database on Tony's computer. Now, it’s up to you to use your SQL skills and find out who murdered Tony Stark.
+                </p>
+
+                <h2>Rules</h2>
+                <p>tbd</p>
+
+                <h2>Practice</h2>
+                <p>tbd</p>
+                
+                <h2>Start Here: SQL Injection</h2>
+                <p>
+                    You now have Tony's computer, which you can use to view the database. There's only one problem: you do not know his password to access his private database. You can only think of one option to get access to his computer, SQL Injection! While it is a form of hacking, you deem it worthy in order to try to find out who murdered your friend, Tony. 
+                </p>
+
+                <form>
+                    <div class="form-group">
+                      <label for="username">Username</label>
+                      <input type="username" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label for="password">Password</label>
+                      <input type="password" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+              </div>
+            </div>
+        </div>
     </body>
 </html>
