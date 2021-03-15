@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -19,7 +20,7 @@ class Step1 extends React.Component{
       <Container fluid='md'>
         <h2 className='sub-headers'>Step One: Credential SQL Injection</h2>
         <p>
-          You now have Tony's computer, which you can use to view the database. There's only one problem: you do not know his password to access his private database. You can only think of one option to get access to his computer, SQL Injection! While it is a form of hacking, you deem it worthy in order to try to find out who murdered your friend, Tony. 
+          You now have Tony's computer, which you can use to view the database. There's only one problem: you do not know his password to access his private database. You can only think of one option to get access to his computer, SQL Injection! While it is a form of hacking, you deem it worthy in order to try to find out who murdered your friend, Tony.<br></br> <b>Use SQL injection to retrieve Tony's username and password.</b>
         </p>
         <Row>
         <Col>
@@ -48,10 +49,19 @@ class Step1 extends React.Component{
           </Form.Group>
           <Button className = 'login-button' variant='primary'>Login</Button>
           </div>
+          {this.clicked ? 
+            <div className='sql-results'>
+            <ListGroup>
+              <ListGroup.Item> Results of SQL Injection</ListGroup.Item>
+              <ListGroup.Item>UserId = ...</ListGroup.Item>
+              <ListGroup.Item>Username = ...</ListGroup.Item>
+              <ListGroup.Item>Password = ...</ListGroup.Item>
+            </ListGroup>
+          </div>
+          : null }
         </Form> 
         </Col>
         </Row>
-        
       </Container>
 
 

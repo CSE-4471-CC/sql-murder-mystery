@@ -27,3 +27,8 @@
 .hint {
   margin-top: 50px;
 }
+
+.sql-results {
+  margin-top: 50px;
+  width: 70%;
+}
