@@ -1,0 +1,34 @@
+.header-content{
+  text-align: center;
+}
+
+.sub-headers {
+  text-align: center;
+}
+
+
+.login-form {
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.login-button{
+  width: 70%;
+}
+
+.form-control{
+  width: 70% !important;
+}
+
+.login-labels {
+  padding-right: 400px;
+}
+
+.hint {
+  margin-top: 50px;
+}
+
+.sql-results {
+  margin-top: 50px;
+  width: 70%;
+}

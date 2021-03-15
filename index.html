@@ -1,9 +1,127 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- head definitions go here -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <h1>Hello World!</h1>
+      <div class="container">
+        <div class="row justify-content-md-center text-center">
+          <div class="col-8">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                  <h1 class="display-4">Welcome to SQL Murder Mystery!</h1>
+                  <p class="lead">Can you figure out who murdered Tony Stark?</p>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <hr>
+        <div class="container">
+          <div class="row justify-content-md-center">
+            <div class="col-8">
+              <h2>Background</h2>
+              <p>
+                  Your best friend and boss of 5 years, Tony Stark, has just been found dead in the office break room right next to the coffee machine. Unfortunately, the police don’t have any suspects and the case has gone cold. However, you think that one of your coworkers must be responsible. In order to see who's had access to the breakroom, you know you'll have to break into the secret employee database on Tony's computer. Now, it’s up to you to use your SQL skills and find out who murdered Tony Stark.
+              </p>
+              <h2>Rules</h2>
+              <p>This is an interactive game that will show you how SQL Injection can be used to exploit webpages in order to retrieve confidential information from their underlying database.
+                Each step of the game will require you to successfully execute SQL statements or prove your knowledge about SQL Injection to uncover clues that will help you to solve the unsolved murder of Tony Stark.
+                There will be helpful hints along the way if you need help with the task at hand. Good luck!</p>
+              <h2>Practice</h2>
+              <p>tbd</p>
+              <h2>Start Here: SQL Injection</h2>
+              <p>
+                  You now have Tony's computer, which you can use to view the database. There's only one problem: you do not know his password to access his private database. You can only think of one option to get access to his computer, SQL Injection! While it is a form of hacking, you deem it worthy in order to try to find out who murdered your friend, Tony. 
+              </br>
+                  <b>Use SQL injection to retrieve Tony's username and password.</b>
+              </p>
+              <form>
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="username" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control">
+                </div>
+                </br>
+                <button type="button" class="btn btn-primary" onclick="sqlReveal()">Login</button>
+              </form>
+              </br>
+              <ul class="list-group" id="sql-output-reveal">
+                <li class="list-group-item">We'll want the username and password output from our sql injection to be listed here in some way</li>
+                <li class="list-group-item">...</li>
+                <li class="list-group-item">...</li>
+                <li class="list-group-item">...</li>
+                <li class="list-group-item">...</li>
+              </ul>
+              </br>
+              <p> <b>Great! Now that you have Tony's username and password, try logging into the system again.</b></p>
+                <!-- we should explicitly verify that the user inputs the correct username/password for Tony and only after that do we reveal the next steps -->
+
+              <form>
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="username" id="username" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" id="password" class="form-control">
+                </div>
+                </br>
+                <p>
+                  <b>Press the login button to see if you are correct!</b>
+                </p>
+                <button type="button" class="btn btn-primary" onclick="loginReveal()">Login</button>
+              </form>
+              <!-- <p> only show the rest of the page once you correctly have Tony's password...</p> -->
+              <!-- <button type="button" class="btn btn-primary" onclick="reveal()">Login</button> -->
+              <div id="login-reveal">
+                </br>
+                <p>
+                  <b>Congrats!</b> You're in. Now we're going to explore Tony's secret employee database.
+                </p>
+                <!-- instead of having a next button we could also just have a correct login send you to page 2 -->
+                <button type="button" class="btn btn-success" onclick="document.location='page2.html'">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+
+          function sqlReveal() {
+            var x = document.getElementById("sql-output-reveal");
+            if (x.style.display == "none") {
+              x.style.display = "block";
+              console.log("sql revealed")
+            } else {
+              x.style.display = "none";
+            }
+          }
+
+          function loginReveal() {
+            var x = document.getElementById("login-reveal");
+            if (usernamePasswordCheck()) {
+              x.style.display = "block";
+            } else {
+              x.style.display = "none";
+            }
+          }
+
+          function usernamePasswordCheck() {
+            // would prob be better to get the username and password from the db rather than just leave them in the code like this lol
+            var u_correct = document.getElementById("username").value == "tstark";
+            var p_correct = document.getElementById("password").value == "1234567";
+            if(u_correct && p_correct) {
+              console.log("correct username and password")
+              return true;
+            } else {
+              return false;
+            }
+          }
+          </script>
     </body>
 </html>
