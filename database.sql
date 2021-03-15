@@ -12,7 +12,6 @@ Building_ID INT NOT NULL,
 Building_date DATE NOT NULL,
 Building_time TIME NOT NULL,
 User_ID INT NOT NULL,
-PRIMARY KEY(Building_ID)
 FOREIGN KEY(User_ID) references USERS(User_ID));
 
 -- Table: COMPUTER_ACCESS
@@ -54,6 +53,21 @@ CREATE TABLE USERS(
 User_ID INT NOT NULL,
 Password VARCHAR(30) NOT NULL,
 PRIMARY KEY(User_ID));
+
+-- Table: PURCHASE_ORDERS
+CREATE TABLE PURCHASE_ORDERS (
+    PO_NUMBER     INT          NOT NULL,
+    USER_ID       INT          NOT NULL,
+    ITEM          VARCHAR (30) NOT NULL,
+    COST          DOUBLE       NOT NULL,
+    DATE_RECIEVED DATE,
+    TIME_RECIEVED TIME,
+    PRIMARY KEY (
+        PO_NUMBER
+    )
+    FOREIGN KEY(User_ID) references USERS(User_ID))
+);
+
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
