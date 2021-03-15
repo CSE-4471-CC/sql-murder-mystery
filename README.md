@@ -3,7 +3,7 @@
 ## Important files in our repository:
 - index.html: working template of our game content in HTML and Javascript (Julia)
 - styles.css: styling for index.html (Julia)
-- database.sql: database schema we will be copying into backend once it's created (Tom)
+- database.sql: database schema we will be copying into backend once it's created (Tom/Andrew)
 - sql-murder-mystery: react app we might use for our final project pending checkpoint feedback (Lia)
 
 
