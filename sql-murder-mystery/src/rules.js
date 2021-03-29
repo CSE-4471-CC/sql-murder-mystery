@@ -17,7 +17,8 @@ class Rules extends React.Component{
           Each step of the game will require you to successfully execute SQL statements or prove your knowledge about SQL Injection to uncover clues that will help you to solve the unsolved murder of Tony Stark.
           There will be helpful hints along the way if you need help with the task at hand. Good luck!
         </p>
-        <Button variant="outline-primary" href="/practice" >Start Game!</Button>
+        <Button variant="outline-primary float-left" href="/backstory" >Back</Button>
+        <Button variant="outline-primary float-right" href="/practice" >Practice!</Button>
       </Container>
 
     );

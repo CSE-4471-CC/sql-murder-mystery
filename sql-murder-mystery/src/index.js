@@ -6,6 +6,10 @@ import Backstory from './backstory'
 import Rules from './rules'
 import Practice from './practice'
 import Step1 from './step1'
+import Honey from './honey';
+import Tables from './tables';
+import Users from './users';
+import BuildingAccess from './building_access';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,6 +17,18 @@ ReactDOM.render(
     <Header></Header>
     <div>
       <Switch>
+        <Route path='/building_access'>
+          <BuildingAccess/>
+        </Route>
+        <Route path='/users'>
+          <Users/>
+        </Route>
+        <Route path='/tables'>
+          <Tables/>
+        </Route>
+        <Route path='/honey'>
+          <Honey/>
+        </Route>
         <Route path='/rules'>
           <Rules/>
         </Route>

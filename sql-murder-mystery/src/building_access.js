@@ -5,7 +5,7 @@ import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-class Practice extends React.Component{
+class BuildingAccess extends React.Component{
   constructor (props) {
     super(props);
   }
@@ -13,10 +13,10 @@ class Practice extends React.Component{
   render(){
     return(
       <Container fluid='md'>
-        <h2 className='sub-headers'>Let's Practice!</h2>
+        <h2 className='sub-headers'>building access stuff here!</h2>
         <p>TBD</p>
-        <Button variant="outline-primary float-left" href="/rules" >Back</Button>
-        <Button variant="outline-primary float-right" href="/step1">Start Game!</Button>
+        <Button variant="outline-primary float-left" href="/users" >Back</Button>
+        {/* <Button variant="outline-primary float-right" href="/step1">Start Game!</Button> */}
       </Container>
 
     );
@@ -24,4 +24,4 @@ class Practice extends React.Component{
 }
 
 
-export default Practice;
+export default BuildingAccess;
