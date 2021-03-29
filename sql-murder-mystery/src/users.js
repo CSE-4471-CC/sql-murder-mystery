@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import SQLInput from './sql_input'
 
 
 class Users extends React.Component{
@@ -14,7 +15,8 @@ class Users extends React.Component{
     return(
       <Container fluid='md'>
         <h2 className='sub-headers'>users?</h2>
-        <p>TBD</p>
+        <p>Now that we know what tables Tony has in his database, it's time to write some SQL queries! First, <b>find Tony's user ID.</b></p>
+        <SQLInput/>
         <Button variant="outline-primary float-left" href="/tables" >Back</Button>
         <Button variant="outline-primary float-right" href="/building_access">Continue</Button>
       </Container>
