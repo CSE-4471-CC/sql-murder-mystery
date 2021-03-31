@@ -15,7 +15,7 @@ class BuildingAccess extends React.Component{
       <Container fluid='md'>
         <h2 className='sub-headers'>building access stuff here!</h2>
         <p>TBD</p>
-        <Button variant="outline-primary float-left" href="/users" >Back</Button>
+        <Button variant="outline-primary float-left" href="/table_list" >Back</Button>
         <Button variant="outline-primary float-right" href="/step1" disabled>Continue</Button>
       </Container>
 
