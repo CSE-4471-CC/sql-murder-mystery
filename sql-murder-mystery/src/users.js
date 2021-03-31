@@ -18,7 +18,7 @@ class Users extends React.Component{
         <p>Now that we know what tables Tony has in his database, it's time to write some SQL queries! First, <b>find Tony's user ID.</b></p>
         <SQLInput/>
         <Button variant="outline-primary float-left" href="/tables" >Back</Button>
-        <Button variant="outline-primary float-right" href="/building_access">Continue</Button>
+        <Button variant="outline-primary float-right" href="/table_list">Continue</Button>
       </Container>
 
     );
