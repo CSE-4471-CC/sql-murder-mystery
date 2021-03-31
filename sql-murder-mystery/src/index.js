@@ -10,6 +10,7 @@ import Honey from './honey';
 import Tables from './tables';
 import Users from './users';
 import BuildingAccess from './building_access';
+import TableList from './table_list';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,6 +20,9 @@ ReactDOM.render(
       <Switch>
         <Route path='/building_access'>
           <BuildingAccess/>
+        </Route>
+        <Route path='/table_list'>
+          <TableList/>
         </Route>
         <Route path='/users'>
           <Users/>
