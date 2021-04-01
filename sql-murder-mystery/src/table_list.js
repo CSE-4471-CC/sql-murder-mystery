@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import SQLInput from './sql_input'
 
 
 class BuildingAccess extends React.Component{
