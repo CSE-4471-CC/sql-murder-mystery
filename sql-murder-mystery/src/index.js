@@ -9,6 +9,7 @@ import Step1 from './step1'
 import Honey from './honey';
 import Tables from './tables';
 import Users from './users';
+import Step4 from './step4';
 import BuildingAccess from './building_access';
 
 ReactDOM.render(
@@ -38,9 +39,12 @@ ReactDOM.render(
         <Route path='/step1'>
           <Step1/>
         </Route>
-        <Route path='/'>
+        <Route exact path='/'>
           <Backstory/>
         </Route>
+				<Route path='/step4'>
+					<Step4/>
+				</Route>
       </Switch>
     </div>
     </Router>
