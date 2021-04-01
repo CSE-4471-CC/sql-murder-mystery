@@ -32,3 +32,14 @@
   margin-top: 50px;
   width: 70%;
 }
+
+.question-button {
+	width: 30%;
+	margin-top: 20px;
+	margin-left: 100px;
+	margin-bottom: 10px;
+}
+
+.answer-text {
+	margin: 20px;
+}
