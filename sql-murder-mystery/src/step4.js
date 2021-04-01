@@ -11,9 +11,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 class Step4 extends React.Component {
   constructor (props) {
     super(props);
-
-
-
   }
 
   render(){
@@ -44,5 +41,4 @@ class Step4 extends React.Component {
     );
   }
 }
-
 export default Step4;

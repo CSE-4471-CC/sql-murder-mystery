@@ -69,7 +69,7 @@ class Step1 extends React.Component{
 					the query in order to bypass the intended programatic flow.
 				</p>
 			</div>;
-			continueButton = <Button variant="outline-primary float-right" href="/honey">Continue</Button>;
+			continueButton = <Button variant="outline-primary float-right" href="/step2">Continue</Button>;
 		} else if (this.state.isClicked && !this.state.isQuerySuccessful){
 			queryResponse = <div>
 				<p> Hmm, looks like your SQL Injection wasn't quite right. Please try again.
