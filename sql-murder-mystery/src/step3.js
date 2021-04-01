@@ -5,7 +5,7 @@ import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-class Tables extends React.Component{
+class Step3 extends React.Component{
   constructor (props) {
     super(props);
   }
@@ -24,4 +24,4 @@ class Tables extends React.Component{
 }
 
 
-export default Tables;
+export default Step3;
