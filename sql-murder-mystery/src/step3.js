@@ -47,5 +47,4 @@ class Step3 extends React.Component{
   }
 }
 
-
 export default Step3;

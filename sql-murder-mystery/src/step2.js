@@ -55,6 +55,7 @@ class Step2 extends React.Component{
           </Col>
         </Row>
         <Button variant="outline-primary float-right" href="/step3">Continue</Button>
+
         <Button variant="outline-primary float-left" href="/step1">Back</Button>
       </Container>
 
