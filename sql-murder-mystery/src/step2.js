@@ -15,7 +15,7 @@ class Step2 extends React.Component{
       <Container fluid='md'>
         <h2 className='sub-headers'>Uh oh!</h2>
         <p>Honey pot time! Not sure if y'all wanted me to do this part, but i'll make a questions template beneath to get things started... </p>
-        <Button variant="outline-primary float-right" href="/tables">Continue</Button>
+        <Button variant="outline-primary float-right" href="/step3">Continue</Button>
         <Button variant="outline-primary float-left" href="/step1">Back</Button>
       </Container>
 

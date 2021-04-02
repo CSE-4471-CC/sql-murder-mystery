@@ -5,7 +5,7 @@ import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-class Tables extends React.Component{
+class Step3 extends React.Component{
   constructor (props) {
     super(props);
   }
@@ -15,8 +15,8 @@ class Tables extends React.Component{
       <Container fluid='md'>
         <h2 className='sub-headers'>the page where you get info on the tables</h2>
         <p>TBD</p>
-        <Button variant="outline-primary float-left" href="/honey" >Back</Button>
-        <Button variant="outline-primary float-right" href="/users">Continue</Button>
+        <Button variant="outline-primary float-left" href="/step2" >Back</Button>
+        <Button variant="outline-primary float-right" href="/step4">Continue</Button>
       </Container>
 
     );
@@ -24,4 +24,4 @@ class Tables extends React.Component{
 }
 
 
-export default Tables;
+export default Step3;
