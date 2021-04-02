@@ -11,9 +11,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 class Step4 extends React.Component {
   constructor (props) {
     super(props);
-
-
-
   }
 
   render(){
@@ -40,7 +37,6 @@ class Step4 extends React.Component {
       <Container fluid="md">
 				<Question question = {question} answers = {answers} header={header} responses={responses}/>
       </Container>
-
     );
   }
 }

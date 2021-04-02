@@ -5,7 +5,7 @@ import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-class Honey extends React.Component{
+class Step2 extends React.Component{
   constructor (props) {
     super(props);
   }
@@ -24,4 +24,4 @@ class Honey extends React.Component{
 }
 
 
-export default Honey;
+export default Step2;

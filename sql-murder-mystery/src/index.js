@@ -6,9 +6,8 @@ import Backstory from './backstory'
 import Rules from './rules'
 import Practice from './practice'
 import Step1 from './step1'
-import Honey from './honey';
-import Tables from './tables';
-import Users from './users';
+import Step2 from './step2';
+import Step3 from './step3';
 import Step4 from './step4';
 import BuildingAccess from './building_access';
 
@@ -21,14 +20,11 @@ ReactDOM.render(
         <Route path='/building_access'>
           <BuildingAccess/>
         </Route>
-        <Route path='/users'>
-          <Users/>
-        </Route>
-        <Route path='/tables'>
+        <Route path='/step3'>
           <Tables/>
         </Route>
-        <Route path='/honey'>
-          <Honey/>
+        <Route path='/step2'>
+          <Step2/>
         </Route>
         <Route path='/rules'>
           <Rules/>
