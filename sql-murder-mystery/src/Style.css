@@ -43,3 +43,19 @@
 .answer-text {
 	margin: 20px;
 }
+
+.sub-headers {
+	text-align: center;
+}
+
+.mb-2 {
+	margin-left: 225px;
+}
+
+.helper-text {
+	text-align: center;
+}
+
+.instruction-div {
+	margin-top: 25px;
+}
