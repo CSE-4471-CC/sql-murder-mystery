@@ -20,8 +20,11 @@ ReactDOM.render(
         <Route path='/building_access'>
           <BuildingAccess/>
         </Route>
+        <Route path='/step4'>
+          <Step4/>
+        </Route>
         <Route path='/step3'>
-          <Tables/>
+          <Step3/>
         </Route>
         <Route path='/step2'>
           <Step2/>

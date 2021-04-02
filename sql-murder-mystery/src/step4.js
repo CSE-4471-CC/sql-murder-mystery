@@ -40,5 +40,4 @@ class Step4 extends React.Component {
     );
   }
 }
-
 export default Step4;
