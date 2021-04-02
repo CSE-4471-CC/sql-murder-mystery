@@ -14,19 +14,16 @@ class BuildingAccess extends React.Component{
   render(){
     return(
       <Container fluid='md'>
-<<<<<<<< HEAD:sql-murder-mystery/src/table_list.js
         <h2 className='sub-headers'>Get the Tables!</h2>
         <p>We know from our experiance with Tony, that he would only be using a SQLite server. So, we can use standard practices for SQLite to get the </p>
         <SQLInput />
         <Button variant="outline-primary float-left" href="/users" >Back</Button>
         <Button variant="outline-primary float-right" href="/building_access">Continue</Button>
-========
         <h2 className='sub-headers'>users?</h2>
         <p>Now that we know what tables Tony has in his database, it's time to write some SQL queries! First, <b>find Tony's user ID.</b></p>
         <SQLInput/>
         <Button variant="outline-primary float-left" href="/tables" >Back</Button>
         <Button variant="outline-primary float-right" href="/table_list">Continue</Button>
->>>>>>>> Added table_list before building_access:sql-murder-mystery/src/users.js
       </Container>
 
     );
