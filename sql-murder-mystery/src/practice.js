@@ -14,7 +14,7 @@ class Practice extends React.Component{
     return(
       <Container fluid='md'>
         <h2 className='sub-headers'>Let's Practice!</h2>
-        <p>SQL Injection most often happens when a user is prompted for input on a piece of information, such as a User ID. Instead of putting in their ID, they would input a SQL Statement that will run through the systems database and retrieve sensitive information.
+        <p>SQL Injection most often happens when a user is prompted for input on a piece of information, such as a User ID. Instead of putting in their ID, they would input a SQL Statement that runs through the systems database and retrieves sensitive information.
               Let's run through this process with a simple practice problem so we can get your feet wet before we embark on the real challenge! </p>
               </br>
               <p>In the form below, we're going to retrieve the password information for "John Doe". In the "Username" slot, input the following SQL Query:</p>
