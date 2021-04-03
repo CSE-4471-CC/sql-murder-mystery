@@ -10,6 +10,7 @@ import Step2 from './step2';
 import Step3 from './step3';
 import Step4 from './step4';
 import BuildingAccess from './building_access';
+import TableList from './table_list';
 
 ReactDOM.render(
   <React.StrictMode>
