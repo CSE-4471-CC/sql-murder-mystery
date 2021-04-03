@@ -59,3 +59,20 @@
 .instruction-div {
 	margin-top: 25px;
 }
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 15px;
+}
+
+.second-row-qq {
+	margin-left: 14px;
+}
+
+.col-table {
+	margin-top: 80px;
+}
