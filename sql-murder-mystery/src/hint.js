@@ -14,7 +14,6 @@ class Hint extends React.Component {
 	}
 	
   render(){
-
     return(
 			<Container>
       <Row className="justify-content-md-center">
