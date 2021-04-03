@@ -42,7 +42,7 @@ class Step1 extends React.Component{
   }
 
   async executeQuery(user_id, pwd, isQuerySuccessful){
-    const response = await fetch(BACKEND_API_URL + "/login_query", {
+    const response = await fetch(BACKEND_API_URL + "/login_bypass", {
       method: "POST",
       mode: 'cors', 
       headers: {
