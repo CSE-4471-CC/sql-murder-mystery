@@ -10,19 +10,15 @@ import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
+
+
 class Question extends React.Component {
   constructor (props) {
     super(props);
-
-		this.state = {initialState: true, isAClicked: false, 
-			isBClicked: false, 
-			isCClicked: false, 
-			isDClicked: false,
-			}
-  }
+	}
+	
 
   render(){
-
     return(
       <Container fluid="md">
 				<Row className="justify-content-md-center">
@@ -63,7 +59,7 @@ class Question extends React.Component {
 										</Popover.Content>
 									</Popover>
 								}>
-								<Button className="question-button" variant="outline-primary" size="sm" value='B'  > B </Button>
+								<Button className="question-button" variant="outline-primary" size="sm" value='B'> B </Button>
 							</OverlayTrigger>
 							{this.props.answers[1]}
 						</Card>
@@ -84,7 +80,7 @@ class Question extends React.Component {
 										</Popover.Content>
 									</Popover>
 								}>
-								<Button className="question-button" variant="outline-primary" size="sm" value='C'  > C </Button>
+								<Button className="question-button" variant="outline-primary" size="sm" value='C'> C </Button>
 							</OverlayTrigger>
 							{this.props.answers[2]}
 						</Card>
@@ -101,7 +97,7 @@ class Question extends React.Component {
 										</Popover.Content>
 									</Popover>
 								}>
-								<Button className="question-button" variant="outline-primary" size="sm" value='D' > D </Button>
+								<Button  className="question-button" variant="outline-primary" size="sm" value='D'  > D </Button>
 							</OverlayTrigger>
 							{this.props.answers[3]}
 						</Card>

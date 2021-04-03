@@ -1,8 +1,6 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
-import './Style.css';
-import 'bootstrap/dist/css/bootstrap.css';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Accordion from 'react-bootstrap/Accordion';
@@ -10,6 +8,8 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import ResponseTable from './ResponseTable'
 import ListGroup from 'react-bootstrap/ListGroup';
+import './Style.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const BACKEND_API_URL = 'http://127.0.0.1:5000/endpoints';
 
