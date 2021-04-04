@@ -438,7 +438,7 @@ class Step4 extends React.Component {
 			let continueButton = null;
 			if(this.state.batchSql2Correct){
 				batchFileOutput = <div>
-					<p className="helper-text"> The output of this query was also saved in a text file called "TS_Questionnaire.txt" in the SQL-Mystery-Game-Files folder on your Desktop for future reference.</p>
+					<p className="helper-text"> The output of this query was also saved in a text file called "Clues.txt" in the SQL-Mystery-Game-Files folder on your Desktop for future reference.</p>
 				</div>;
 				continueButton = <Button variant="outline-primary float-right" href="/step5">Continue</Button>;
 			}

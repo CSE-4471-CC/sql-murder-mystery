@@ -42,7 +42,7 @@ async handleQuery(){
 }
 
 async executeQuery(user_id, pwd, isQuerySuccessful){
-	const response = await fetch(BACKEND_API_URL + "/login_bypass", {
+	const response = await fetch(BACKEND_API_URL + "/login_query", {
 		method: "POST",
 		mode: 'cors', 
 		headers: {
@@ -51,7 +51,8 @@ async executeQuery(user_id, pwd, isQuerySuccessful){
 		body: JSON.stringify({
 			isQuerySuccessful: isQuerySuccessful,
 			user_id: user_id,
-			password: pwd
+			password: pwd,
+			game_step: this.props.game_step
 		})
 	}) 
 	return await response.json();
