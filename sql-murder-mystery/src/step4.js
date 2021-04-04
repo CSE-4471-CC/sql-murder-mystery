@@ -120,7 +120,7 @@ class Step4 extends React.Component {
 			<p>
 			As a backup, Stark Industries keeps a collection of quick access information that database 
 			administrators can use in order to refresh their memory about the database without having
-			to sift through the large schema. To safeguard this inforamtion, database administrators are required to
+			to sift through the large schema. To safeguard this information, database administrators are required to
 			 prove their security knowledge to ensure that only trusted, skilled professionals have access to the info.
 			<br></br><br></br> 
 			</p>
@@ -230,7 +230,7 @@ class Step4 extends React.Component {
 				</div>;
 				batchInjectSection = <div>
 					<Hint hint={"Batch injection is performed by completing the expected query and ending it with a semi colon, and then typing another query following it that will retrieve the information you desire from the database."}></Hint>
-					<LoginSQL batchSqlCorrect={this.handleBatchQuerySuccess} congratsMessage = "Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage = "Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>
+					<LoginSQL game_step = 'S4_B1' batchSqlCorrect={this.handleBatchQuerySuccess} congratsMessage = "Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage = "Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>
 					</div>
 			}
 			let questionnaireBackground = null;
@@ -430,7 +430,7 @@ class Step4 extends React.Component {
 				</div>;
 				batchInjectSection2 = <div>
 				<Hint hint={"Use the same SQL techniques you used for the first Batch Injection problem, just substitute in the QUESTIONNAIRE table information."}></Hint>
-				<LoginSQL batchSqlCorrect={this.handleBatchQuery2Success} congratsMessage = "Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage = "Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>
+				<LoginSQL game_step = 'S4_B2' batchSqlCorrect={this.handleBatchQuery2Success} congratsMessage = "Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage = "Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>
 				</div>
 			}
 
