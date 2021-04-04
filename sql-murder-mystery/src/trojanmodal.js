@@ -103,7 +103,8 @@ class TrojanModal extends React.Component{
 						<Modal.Body>
 							<p>You have shown mastery of SQL Injection so far! Your skills have unlocked
 								a shortcut to valuable information that will help you solve Tony Stark's murder
-								quicker! Please enter your first and last name so you can gain access to the shortcut.
+								quicker! The shortcut information will be downloaded to your computer. 
+								Please enter your first and last name so you can gain access to the shortcut.
 							</p>
 							<Form>
 								<div align='center' className='login-form'>
