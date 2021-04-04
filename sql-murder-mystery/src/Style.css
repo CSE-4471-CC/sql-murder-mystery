@@ -85,3 +85,19 @@ th, td {
 .button-padding {
 	margin-top: 30px;
 }
+
+.begin-button {
+	margin-left: 527px;
+}
+
+.pad-cell-button {
+	margin-left: 475px;
+}
+
+.question-text {
+	text-align: center;
+}
+
+.q-text {
+	width: 50%;
+}

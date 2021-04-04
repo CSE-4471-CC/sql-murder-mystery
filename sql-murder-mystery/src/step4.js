@@ -226,7 +226,7 @@ class Step4 extends React.Component {
 				batchInjectInstructions = <div className="instruction-div">
 				<p className="helper-text"><b>CLUE:</b> The first and last name columns are named in snake case with only the first letter capitalized.</p>
 				<h6 className="sub-headers"> SQL Injection</h6>
-				<p className="helper-text"><b>Use Batch SQL Injection to retrieve Tony Stark's User_ID from the USER_INFO table.</b></p>
+				<p className="helper-text"><b>Use Batch SQL Injection to retrieve all name and User ID records from the USER_INFO table. Make special note of Tony's ID. </b></p>
 				</div>;
 				batchInjectSection = <div>
 					<Hint hint={"Batch injection is performed by completing the expected query and ending it with a semi colon, and then typing another query following it that will retrieve the information you desire from the database."}></Hint>
@@ -453,7 +453,7 @@ class Step4 extends React.Component {
 					more insight into Tony's life for clues that might help us, let's query some of the database tables referenced
 					in the partial schema we retrieved.
 				</p>
-				<h5>Tony's User ID</h5>
+				<h5>Employee User ID</h5>
 				<p>
 					Everyone in the company has a unique user ID number that is used to link all of their data back to them.
 					Based on the table names, which table should we use to find Tony's ID?
@@ -469,7 +469,7 @@ class Step4 extends React.Component {
       				overlay={
         				<Popover id='popover-positioned-top'>
           				<Popover.Title as="h3">Incorrect</Popover.Title>
-          				<Popover.Content> add explanation?</Popover.Content>
+          				<Popover.Content>Trial and error when navigating a schema blind is completely normal! Please try again! </Popover.Content>
         				</Popover>
       				}>
 							<Button variant='outline-primary'>USERS</Button>
@@ -482,7 +482,6 @@ class Step4 extends React.Component {
       				overlay={
         				<Popover id='popover-positioned-top'>
           				<Popover.Title as="h3">Correct!</Popover.Title>
-          				<Popover.Content> add explanation?</Popover.Content>
         				</Popover>
       				}>
 							<Button variant='outline-primary' onClick={this.handleClick}>USER_INFO</Button>
@@ -495,7 +494,7 @@ class Step4 extends React.Component {
       				overlay={
         				<Popover id='popover-positioned-top'>
           				<Popover.Title as="h3">Incorrect</Popover.Title>
-          				<Popover.Content> add explanation?</Popover.Content>
+          				<Popover.Content>Trial and error when navigating a schema blind is completely normal! Please try again!</Popover.Content>
         				</Popover>
       				}>
 							<Button variant='outline-primary'>QUESTIONNAIRE</Button>
@@ -508,7 +507,7 @@ class Step4 extends React.Component {
       				overlay={
         				<Popover id='popover-positioned-top'>
           				<Popover.Title as="h3">Incorrect</Popover.Title>
-          				<Popover.Content> add explanation?</Popover.Content>
+          				<Popover.Content>Trial and error when navigating a schema blind is completely normal! Please try again!</Popover.Content>
         				</Popover>
       				}>
 							<Button variant='outline-primary'>PURCHASE_ORDERS</Button>
@@ -521,7 +520,7 @@ class Step4 extends React.Component {
       				overlay={
         				<Popover id='popover-positioned-top'>
           				<Popover.Title as="h3">Incorrect</Popover.Title>
-          				<Popover.Content> add explanation?</Popover.Content>
+          				<Popover.Content>Trial and error when navigating a schema blind is completely normal! Please try again!</Popover.Content>
         				</Popover>
       				}>
 							<Button variant='outline-primary'>BUILDING_ACCESS</Button>

@@ -14,7 +14,7 @@ class LoginSQL extends React.Component {
 	constructor (props) {
     super(props);
 
-		this.state = {isClicked: false, isQuerySuccessful: false, user_id: '', password: ''};
+		this.state = {isClicked: false, isQuerySuccessful: false, user_id: '', password: '', correctResults: false, errorMessage: ''};
 
 		this.handleQuery = this.handleQuery.bind(this);
 		this.handleUserIdChange = this.handleUserIdChange.bind(this);
@@ -35,10 +35,19 @@ handlePasswordChange(e){
 
 async handleQuery(){
 	var response = await this.executeQuery(this.state.user_id, this.state.password);
-	var isQuerySuccessful = response.isQuerySuccessful == 'true' ? true : false
+	var isQuerySuccessful = response.isQuerySuccessful == 'true' ? true : false;
+	var correctResults = response.correctResults == 'true' ? true : false;
 	this.setState({isQuerySuccessful: isQuerySuccessful});
+	this.setState({correctResults: correctResults});
 	this.setState({isClicked: true});
-	this.props.batchSqlCorrect(isQuerySuccessful);
+	this.setState({errorMessage: response.error});
+
+	if(isQuerySuccessful && correctResults){
+		this.props.batchSqlCorrect(true);
+	} else {
+		this.props.batchSqlCorrect(false);
+	}
+	
 }
 
 async executeQuery(user_id, pwd, isQuerySuccessful){
@@ -60,17 +69,17 @@ async executeQuery(user_id, pwd, isQuerySuccessful){
 	
   render(){
 		let queryResponse, continueButton;
-		if(this.state.isClicked && this.state.isQuerySuccessful){
+		if(this.state.isClicked && this.state.isQuerySuccessful && this.state.correctResults){
 			queryResponse = <div className="instruction-div">
 				<p  className="helper-text"> 
 					{this.props.congratsMessage}
 				</p>
 			</div>;
 			continueButton = <Button variant="outline-primary float-right" href="/step2">Continue</Button>;
-		} else if (this.state.isClicked && !this.state.isQuerySuccessful){
+		} else if (this.state.isClicked && (!this.state.isQuerySuccessful || !this.state.correctResults)){
 			queryResponse = <div className="instruction-div">
 				<p  className="helper-text"> 
-					{this.props.failureMessage}
+					{this.state.errorMessage}
 				</p>
 			</div>;
 			continueButton = null;

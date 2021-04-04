@@ -26,7 +26,7 @@ class Suspect extends React.Component{
 
 
 	async handleSubmit(){
-		var response = await this.checkName(this.state.name, this.props.game_step);
+		var response = await this.checkName(this.state.name);
 		var isQuerySuccessful = response.correct == 'true' ? true : false
 		this.setState({isClicked: true});
 		this.setState({isSuspect: isQuerySuccessful});
@@ -43,7 +43,7 @@ class Suspect extends React.Component{
 			 },
 			body: JSON.stringify({
 				name: name,
-				game_step: game_step
+				game_step: this.props.game_step
 			})
 		}) 
 		return await response.json();

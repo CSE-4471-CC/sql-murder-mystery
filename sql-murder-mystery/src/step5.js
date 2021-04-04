@@ -63,7 +63,7 @@ class Step5 extends React.Component{
 			batchSQL1 = <Container>
 				<h5>Office Almond Snackers</h5>
 				<h6 className='sub-headers'> SQL Injection</h6>
-				<p  className="helper-text"><b>Use SQL Batch Injection to check if anyone in the office has an affinity for almonds.</b></p>
+				<p  className="helper-text"><b>Use SQL Batch Injection to check if anyone in the office has an affinity for almonds. Only use columns you absolutely need in your query please.</b></p>
 				<Hint hint={'Think back to the table, columns, and technique you used for your most recent SQL Injection.'}></Hint>
 				<LoginSQL game_step = 'S5_B1' batchSqlCorrect={this.handleBatchQuerySuccess} congratsMessage = "Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage = "Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>
 			</Container>;
