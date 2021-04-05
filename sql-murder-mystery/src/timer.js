@@ -32,14 +32,22 @@ export default class Timer extends Component {
         clearInterval(this.myInterval)
     }
 
+    
     render() {
         const { minutes, seconds } = this.state
+        let response = <h1>Time remaining: {minutes}:{seconds < 10 ? `0${seconds}` : seconds} </h1>
+        if(minutes === 0 && seconds === 0) {
+            response = <h1>Times up!</h1>
+        } else {
+
+        }
         return (
             <div>
-                { minutes === 0 && seconds === 0
-                    ? <h1>Times up!</h1>
+                {response}
+                {/* { minutes === 0 && seconds === 0
+                    ? <h1>Times up!</h1> 
                     : <h1>Time Remaining: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</h1>
-                }
+                } */}
             </div>
         )
     }

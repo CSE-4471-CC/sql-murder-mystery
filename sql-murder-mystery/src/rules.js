@@ -25,7 +25,7 @@ class Rules extends React.Component{
           As part of the game, text files may be downloaded onto your computer in order to relay important clues or information to you. They will be stored in a file called "SQL-Mystery-Game-Files" on your Desktop. <b> Good luck and happy hacking!</b>
 
         </p>
-        <Button variant="outline-primary float-left" href="/backstory" >Back</Button>
+        <Button variant="outline-primary float-left" href="/" >Back</Button>
         <Button variant="outline-primary float-right" href="/practice" >Practice!</Button>
       </Container>
 

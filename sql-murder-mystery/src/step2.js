@@ -14,7 +14,7 @@ import Popover from 'react-bootstrap/Popover';
 class Step2 extends React.Component{
   constructor (props) {
     super(props);
-    this.state = {clickGo: false, q1Correct: false, q2Correct: false, q3Correct: false, q4Correct: false, q5Correct: false};
+    this.state = {clickGo: false, q1Correct: false, q2Correct: false, q3Correct: false, q4Correct: false, q5Correct: false, minutes: 2, seconds: 0};
     this.handleClick = this.handleClick.bind(this);
     this.handleCorrectChoice = this.handleCorrectChoice.bind(this)
   }
@@ -44,6 +44,32 @@ class Step2 extends React.Component{
         break;
     };
   }
+
+  componentDidMount() {
+    this.myInterval = setInterval(() => {
+        const { seconds, minutes } = this.state
+
+        if (seconds > 0) {
+            this.setState(({ seconds }) => ({
+                seconds: seconds - 1
+            }))
+        }
+        if (seconds === 0) {
+            if (minutes === 0) {
+                clearInterval(this.myInterval)
+            } else {
+                this.setState(({ minutes }) => ({
+                    minutes: minutes - 1,
+                    seconds: 59
+                }))
+            }
+        } 
+    }, 1000)
+}
+
+componentWillUnmount() {
+    clearInterval(this.myInterval)
+}
 
   render(){
 
@@ -137,13 +163,35 @@ class Step2 extends React.Component{
 
     const questionResponses5 = new Map();
     questionResponses5['A'] = 'Nope. This is not part of a honey pot.';
-    questionResponses5['B'] = 'Correct! You just wasted 3 minutes of your life that you will never get back.';
+    questionResponses5['B'] = 'Correct! You just wasted 2 minutes of your life that you will never get back.';
     questionResponses5['C'] = 'No. Unfortunately it was a honey pot.';
     questionResponses5['D'] = 'Try again. Even if this was a characteristic of a honey pot, we this isn\'t something we did (as far as you know...)';
 
+    const { minutes, seconds } = this.state
+    let startOverButton = null;
+    let goButton = <Button variant="primary" onClick={this.handleClick}>GO</Button> 
+    let timer = <h1>Time remaining: {minutes}:{seconds < 10 ? `0${seconds}` : seconds} </h1>
+    if(minutes === 0 && seconds === 0 && !this.state.q5Correct) {
+        timer = <h1>Times up!</h1>
+        this.state.clickGo = false;
+        this.state.q1Correct = false;
+        this.state.q2Correct = false;
+        this.state.q3Correct = false;
+        this.state.q4Correct = false;
+        this.state.q5Correct = false;
+        goButton = null;
+        startOverButton = 
+        <Container>
+          <Row className="justify-content-md-center"><h1>Times up!</h1></Row>
+          <Row className="justify-content-md-center"><Button variant="danger float-right" href="/step1">Start Over</Button></Row>
+        </Container>
+      } else if (minutes === 0 && seconds === 0 && this.state.q5Correct) {
+        timer = <Row className="justify-content-md-center"><h1>Success!</h1></Row>
+      }
+
     let surpriseResponse, questionSetup1 = null;
     if(this.state.clickGo) {
-      surpriseResponse = <div><p style={{marginTop: 16}}>Surprise! In the spirit of Dr. Jones' quizzes, you're being timed! You'll have 3 minutes to answer 5 questions pertaining to what we've learned this semester in CSE 4471.</p> <div className="helper-text"> <Timer/> </div></div>;
+      surpriseResponse = <div><p style={{marginTop: 16}}>Surprise! In the spirit of Dr. Jones' quizzes, you're being timed! You'll have 2 minutes to answer 5 questions pertaining to what we've learned this semester in CSE 4471.</p> <div className="helper-text"> {timer} </div></div>;
       questionSetup1 =
         <Container>
           <Row className="justify-content-md-center">
@@ -565,11 +613,12 @@ class Step2 extends React.Component{
         <Row className="justify-content-md-center">
           <Col xs={8}>
             <div align="center">
-              <Button variant="primary" onClick={this.handleClick}>GO</Button>
+              {goButton}
             </div>
           </Col>
         </Row>
         {surpriseResponse}
+        {startOverButton}
         {questionSetup1}
         {questionSetup2}
         {questionSetup3}
