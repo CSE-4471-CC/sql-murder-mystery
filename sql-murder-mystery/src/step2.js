@@ -64,15 +64,15 @@ class Step2 extends React.Component{
     const questionResponses1 = new Map();
     questionResponses1['A'] = 'No :( This is intrusion detection.';
     questionResponses1['B'] = 'Nope, that\'s an intrusion!';
-    questionResponses1['C'] = 'No, that sounds like an attack protocol';
+    questionResponses1['C'] = 'No, that sounds like an attack protocol.';
     questionResponses1['D'] = 'Hmmm... that sounds kind of like this exercise...';
 
-    const question2 = <p className="helper-text" style={{marginTop: 16}}><b>Question 2: </b>this is a test question!</p>;
+    const question2 = <p className="helper-text" style={{marginTop: 16}}><b>Question 2: </b>Which of the following best describes a padded cell?</p>;
     const questionAnswers2 = [
-      <Card.Text className="answer-text">this is an example answer <br></br><br></br></Card.Text>,
-      <Card.Text className="answer-text">this is an example answer <br></br><br></br></Card.Text>,
-      <Card.Text className="answer-text">this is an example answer <br></br><br></br></Card.Text>,
-      <Card.Text className="answer-text">this is an example answer <br></br><br></br></Card.Text>
+      <Card.Text className="answer-text"> A behavior-based IDPS that samples network activity and compares it with traffic that is known to be normal <br></br><br></br></Card.Text>,
+      <Card.Text className="answer-text"> A type of honey pot that has increased protection so it cannot be compromised <br></br><br></br></Card.Text>,
+      <Card.Text className="answer-text"> The systematic survey of all available applications (open ports) on all footprinted hosts <br></br><br></br></Card.Text>,
+      <Card.Text className="answer-text"> A room with padded walls <br></br><br></br></Card.Text>
     ];
 
     const questionHeaders2 = new Map();
@@ -82,15 +82,15 @@ class Step2 extends React.Component{
 		questionHeaders2['D'] = 'Incorrect';
 
     const questionResponses2 = new Map();
-    questionResponses2['A'] = 'test';
-    questionResponses2['B'] = 'test';
-    questionResponses2['C'] = 'test';
-    questionResponses2['D'] = 'test';
+    questionResponses2['A'] = 'This is actually a statistical anomaly-based IDPS.';
+    questionResponses2['B'] = 'Great job!';
+    questionResponses2['C'] = 'Try again! This is fingerprinting.';
+    questionResponses2['D'] = 'Not quite...';
 
     const question3 = <p className="helper-text" style={{marginTop: 16}}><b>Question 3:</b> True or false, a honey net is a collection of honey pots connecting several honey pot systems on a subnet? </p>;
     const questionAnswers3 = [
-      <Card.Text className="answer-text">this is an example answer <br></br><br></br></Card.Text>,
-      <Card.Text className="answer-text">this is an example answer <br></br><br></br></Card.Text>
+      <Card.Text className="answer-text">True <br></br><br></br></Card.Text>,
+      <Card.Text className="answer-text">False <br></br><br></br></Card.Text>
     ];
 
     const questionHeaders3 = new Map();
@@ -98,8 +98,48 @@ class Step2 extends React.Component{
 		questionHeaders3['B'] = 'Incorrect';
 
     const questionResponses3 = new Map();
-    questionResponses3['A'] = 'test';
-    questionResponses3['B'] = 'test';
+    questionResponses3['A'] = 'Correct!';
+    questionResponses3['B'] = 'Sorry, try again!';
+
+    const question4 = <p className="helper-text" style={{marginTop: 16}}><b>Question 4: </b>While honey pots have many advantages, according to our textbook which of the following is not one?</p>;
+    const questionAnswers4 = [
+      <Card.Text className="answer-text"> Attackers can be diverted to targets that they cannot damage.<br></br><br></br></Card.Text>,
+      <Card.Text className="answer-text"> Administrators have time to decide how to respond to an attacker.<br></br><br></br></Card.Text>,
+      <Card.Text className="answer-text"> The legal implications of using honeypots are well understood.<br></br><br></br></Card.Text>,
+      <Card.Text className="answer-text"> Attackers’ actions can be easily and more extensively monitored with honeypots, and the records can be used to refine threat models and improve system protections.<br></br><br></br></Card.Text>
+    ];
+
+    const questionHeaders4 = new Map();
+		questionHeaders4['A'] = 'Incorrect';
+		questionHeaders4['B'] = 'Incorrect';
+		questionHeaders4['C'] = 'Correct';
+		questionHeaders4['D'] = 'Incorrect';
+
+    const questionResponses4 = new Map();
+    questionResponses4['A'] = 'Nope, this is actually one of the main benefits of using a honey pot.';
+    questionResponses4['B'] = 'Not quite. This is a huge advantage of honeypots.';
+    questionResponses4['C'] = 'Exactly. The legal implications of honey pots are complicated and unclear.';
+    questionResponses4['D'] = 'Try again!';
+
+    const question5 = <p className="helper-text" style={{marginTop: 16}}><b>Question 5: </b> In what way were these last 5 questions a honey pot?</p>;
+    const questionAnswers5 = [
+      <Card.Text className="answer-text"> We included a key characteristic of a honey pot, the countdown.<br></br><br></br></Card.Text>,
+      <Card.Text className="answer-text"> These questions distracted and delayed you from achieving your actual goal.<br></br><br></br></Card.Text>,
+      <Card.Text className="answer-text"> This activity was not a honey pot.<br></br><br></br></Card.Text>,
+      <Card.Text className="answer-text"> We stole your identity while you completed this exercise.<br></br><br></br></Card.Text>
+    ];
+
+    const questionHeaders5 = new Map();
+		questionHeaders5['A'] = 'Incorrect';
+		questionHeaders5['B'] = 'Correct';
+		questionHeaders5['C'] = 'Incorrect';
+		questionHeaders5['D'] = 'Incorrect';
+
+    const questionResponses5 = new Map();
+    questionResponses5['A'] = 'Nope. This is not part of a honey pot.';
+    questionResponses5['B'] = 'Correct! You just wasted 3 minutes of your life that you will never get back.';
+    questionResponses5['C'] = 'No. Unfortunately it was a honey pot.';
+    questionResponses5['D'] = 'Try again. Even if this was a characteristic of a honey pot, we this isn\'t something we did (as far as you know...)';
 
     let surpriseResponse, questionSetup1 = null;
     if(this.state.clickGo) {
@@ -305,7 +345,7 @@ class Step2 extends React.Component{
                 </Popover.Content>
               </Popover>
             }>
-            <Button className="question-button" variant="outline-primary" size="sm" value='correct3' onClick={this.handleCorrectChoice}> True </Button>
+            <Button className="question-button" variant="outline-primary" size="sm" value='correct3' onClick={this.handleCorrectChoice}> T </Button>
           </OverlayTrigger>
             {questionAnswers3[0]}
           </Card>
@@ -323,13 +363,199 @@ class Step2 extends React.Component{
                   </Popover.Content>
                 </Popover>
               }>
-              <Button className="question-button" variant="outline-primary" size="sm"> False </Button>
+              <Button className="question-button" variant="outline-primary" size="sm"> F </Button>
             </OverlayTrigger>
             {questionAnswers3[1]}
           </Card>
         </CardGroup>
         </Row>
       </Container>
+    }
+
+    let questionSetup4 = null;
+    if(this.state.q3Correct) {
+      questionSetup4 =
+      <Container>
+        <Row className="justify-content-md-center">
+          {question4}
+        </Row>
+        <Row className="justify-content-md-center">
+        <CardGroup>
+          <Card style={{ width: '18rem' }} bg="light">
+          <OverlayTrigger
+            trigger="click"
+            key='top'
+            rootClose
+            placement='top'
+            overlay={
+              <Popover id='popover-positioned-top'>
+                <Popover.Title as="h3">{questionHeaders4['A']}</Popover.Title>
+                <Popover.Content>
+                  {questionResponses4['A']}
+                </Popover.Content>
+              </Popover>
+            }>
+            <Button className="question-button" variant="outline-primary" size="sm"> A </Button>
+          </OverlayTrigger>
+            {questionAnswers4[0]}
+          </Card>
+          <Card style={{ width: '18rem' }} bg="light">
+            <OverlayTrigger
+              trigger="click"
+              key='top'
+              rootClose
+              placement='top'
+              overlay={
+                <Popover id='popover-positioned-top'>
+                  <Popover.Title as="h3">{questionHeaders4['B']}</Popover.Title>
+                  <Popover.Content>
+                    {questionResponses4['B']}
+                  </Popover.Content>
+                </Popover>
+              }>
+              <Button className="question-button" variant="outline-primary" size="sm"> B </Button>
+            </OverlayTrigger>
+            {questionAnswers4[1]}
+          </Card>
+        </CardGroup>
+        </Row>
+        <Row className="justify-content-md-center">
+          <CardGroup>
+            <Card style={{ width: '18rem' }} bg="light">
+              <OverlayTrigger
+                trigger="click"
+                key='bottom'
+                rootClose
+                placement='bottom'
+                overlay={
+                  <Popover id='popover-positioned-bottom'>
+                    <Popover.Title as="h3">{questionHeaders4['C']}</Popover.Title>
+                    <Popover.Content>
+                      {questionResponses4['C']}
+                    </Popover.Content>
+                  </Popover>
+                }>
+                <Button className="question-button" variant="outline-primary" size="sm" value='correct4' onClick={this.handleCorrectChoice}> C </Button>
+              </OverlayTrigger>
+              {questionAnswers4[2]}
+            </Card>
+            <Card style={{ width: '18rem' }} bg="light">
+              <OverlayTrigger
+                trigger="click"
+                key='bottom'
+                rootClose
+                placement='bottom'
+                overlay={
+                  <Popover id='popover-positioned-top'>
+                    <Popover.Title as="h3">{questionHeaders4['D']}</Popover.Title>
+                    <Popover.Content>
+                      {questionResponses4['D']}
+                    </Popover.Content>
+                  </Popover>
+                }>
+                <Button  className="question-button" variant="outline-primary" size="sm"> D </Button>
+              </OverlayTrigger>
+              {questionAnswers4[3]}
+            </Card>
+          </CardGroup>
+          </Row>
+      </Container>
+    }
+
+    let questionSetup5 = null;
+    if(this.state.q4Correct) {
+      questionSetup5 = 
+      <Container>
+      <Row className="justify-content-md-center">
+        {question5}
+      </Row>
+      <Row className="justify-content-md-center">
+      <CardGroup>
+        <Card style={{ width: '18rem' }} bg="light">
+        <OverlayTrigger
+          trigger="click"
+          key='top'
+          rootClose
+          placement='top'
+          overlay={
+            <Popover id='popover-positioned-top'>
+              <Popover.Title as="h3">{questionHeaders5['A']}</Popover.Title>
+              <Popover.Content>
+                {questionResponses5['A']}
+              </Popover.Content>
+            </Popover>
+          }>
+          <Button className="question-button" variant="outline-primary" size="sm"> A </Button>
+        </OverlayTrigger>
+          {questionAnswers5[0]}
+        </Card>
+        <Card style={{ width: '18rem' }} bg="light">
+          <OverlayTrigger
+            trigger="click"
+            key='top'
+            rootClose
+            placement='top'
+            overlay={
+              <Popover id='popover-positioned-top'>
+                <Popover.Title as="h3">{questionHeaders5['B']}</Popover.Title>
+                <Popover.Content>
+                  {questionResponses5['B']}
+                </Popover.Content>
+              </Popover>
+            }>
+            <Button className="question-button" variant="outline-primary" size="sm" value='correct5' onClick={this.handleCorrectChoice}> B </Button>
+          </OverlayTrigger>
+          {questionAnswers5[1]}
+        </Card>
+      </CardGroup>
+      </Row>
+      <Row className="justify-content-md-center">
+        <CardGroup>
+          <Card style={{ width: '18rem' }} bg="light">
+            <OverlayTrigger
+              trigger="click"
+              key='bottom'
+              rootClose
+              placement='bottom'
+              overlay={
+                <Popover id='popover-positioned-bottom'>
+                  <Popover.Title as="h3">{questionHeaders5['C']}</Popover.Title>
+                  <Popover.Content>
+                    {questionResponses5['C']}
+                  </Popover.Content>
+                </Popover>
+              }>
+              <Button className="question-button" variant="outline-primary" size="sm"> C </Button>
+            </OverlayTrigger>
+            {questionAnswers5[2]}
+          </Card>
+          <Card style={{ width: '18rem' }} bg="light">
+            <OverlayTrigger
+              trigger="click"
+              key='bottom'
+              rootClose
+              placement='bottom'
+              overlay={
+                <Popover id='popover-positioned-top'>
+                  <Popover.Title as="h3">{questionHeaders5['D']}</Popover.Title>
+                  <Popover.Content>
+                    {questionResponses5['D']}
+                  </Popover.Content>
+                </Popover>
+              }>
+              <Button  className="question-button" variant="outline-primary" size="sm"> D </Button>
+            </OverlayTrigger>
+            {questionAnswers5[3]}
+          </Card>
+        </CardGroup>
+        </Row>
+    </Container>
+    }
+
+    let continueButton = null;
+    if(this.state.q5Correct) {
+      continueButton = <Button variant="outline-primary float-right" href="/step3">Continue</Button>
+
     }
 
     return(
@@ -347,7 +573,9 @@ class Step2 extends React.Component{
         {questionSetup1}
         {questionSetup2}
         {questionSetup3}
-        <Button variant="outline-primary float-right" href="/step3">Continue</Button>
+        {questionSetup4}
+        {questionSetup5}
+        {continueButton}
         <Button variant="outline-primary float-left" href="/step1">Back</Button>
       </Container>
       
