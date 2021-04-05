@@ -1,0 +1,30 @@
+#Andrew Fecher
+.sqltable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .sqltable td, #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    .sqltable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .sqltable tr:hover {
+        background-color: #ddd;
+    }
+
+    .sqltable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #ABCDEF;
+        color: white;
+    }
