@@ -8,57 +8,42 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import ResponseTable from './ResponseTable'
 import ListGroup from 'react-bootstrap/ListGroup';
+import LoginSQL from './loginsql';
+import Hint from './hint';
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-const BACKEND_API_URL = 'http://127.0.0.1:5000/endpoints';
+//Andrew Fecher
 
 class Step3 extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { isClicked: false, isQuerySuccessful: false, results: '', user_id: '', password: '' };
+        this.state = { isClicked: false, isQuerySuccessful: false, batchSqlCorrect: false, results: '', user_id: '', password: '' };
 
-        this.handleQuery = this.handleQuery.bind(this);
-        this.handleUserIdChange = this.handleUserIdChange.bind(this);
-        this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.handleBatchQuerySuccess = this.handleBatchQuerySuccess.bind(this);
+        this.processResults = this.processResults.bind(this);
     }
 
-    handleUserIdChange(e) {
-        e.preventDefault()
-        this.setState({ user_id: e.target.value });
+    handleBatchQuerySuccess(isSuccessful) {
+        this.setState({ batchSqlCorrect: isSuccessful });
     }
 
-    handlePasswordChange(e) {
-        e.preventDefault()
-        this.setState({ password: e.target.value });
+    processResults(results) {
+        this.setState({ results: results });
     }
 
-    async handleQuery() {
-        var response = await this.executeQuery(this.state.user_id, this.state.password);
-        var isQuerySuccessful = response.isQuerySuccessful === 'true' ? true : false
-        this.setState({ isQuerySuccessful: isQuerySuccessful });
-        this.setState({ results: response.results });
-        this.setState({ isClicked: true })
-    }
-
-    async executeQuery(user_id, pwd, isQuerySuccessful) {
-        const response = await fetch(BACKEND_API_URL + "/login_query", {
-            method: "POST",
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                isQuerySuccessful: isQuerySuccessful,
-                user_id: user_id,
-                password: pwd
-            })
-        })
-        return await response.json();
-    }
     render() {
         let queryResponse, continueButton;
+        let loginSQL = <LoginSQL processResults={this.processResults} game_step='S3_B1' batchSqlCorrect={this.handleBatchQuerySuccess} congratsMessage="Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage="Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>;
+        let batchSQL1 = <Container>
+                <h5>Office Almond Snackers</h5>
+                <h6 className='sub-headers'> SQL Injection</h6>
+                <p className="helper-text"><b>Use SQL Batch Injection to check if anyone in the office has an affinity for almonds. Only use columns you absolutely need in your query please.</b></p>
+                <Hint hint={'Think back to the table, columns, and technique you used for your most recent SQL Injection.'}></Hint>
+                {loginSQL}
+            </Container>;
+        
         if (this.state.isClicked && this.state.isQuerySuccessful) {
             queryResponse = <div>
                 <p> Congratulations! You successfully bypassed authentication by using SQL Injection!
@@ -96,33 +81,12 @@ class Step3 extends React.Component {
                 </Row>
                 <Row className="justify-content-md-center">
                     <Col xs={8}>
-                        <p>form should go here eventually, but i don't want to mess with backend stuff just yet{this.state.results}</p>
+                        <p>form should go here eventually, but i don't want to mess with backend stuff just yet</p>
                     </Col>
                 </Row>
                 <Row className="justify-content-md-center">
-                    <Col xs={8}>
-                        <Form>
-                            <div align='center' className='login-form'>
-                                <h3 className='sub-headers'>Login</h3>
-                                <Form.Group controlId='username'>
-                                    <Form.Label className='login-labels'>User_ID</Form.Label>
-                                    <Form.Control value={this.state.user_id} type='username' placeholder="Enter User_ID here" onChange={this.handleUserIdChange}></Form.Control>
-                                </Form.Group>
-                                <Form.Group controlId='password'>
-                                    <Form.Label className='login-labels' >Password</Form.Label>
-                                    <Form.Control value={this.state.password} type='password' placeholder="Enter password here" onChange={this.handlePasswordChange} ></Form.Control>
-                                </Form.Group>
-                                <Button className='login-button' variant='primary' onClick={this.handleQuery}>Login</Button>
-                            </div>
-                            {queryResponse}
-                            {
-                                <div className='sql-results'>
-                                    <p> {this.state.results} </p>
-                                    <ResponseTable results={this.state.results} />
-                                </div>
-                            }
-                        </Form>
-                    </Col>
+                    {batchSQL1}
+                    <ResponseTable results={this.state.results} />
                 </Row>
                 <Button variant="outline-primary float-left" href="/step2" >Back</Button>
                 {continueButton}
