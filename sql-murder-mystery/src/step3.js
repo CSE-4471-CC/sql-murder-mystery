@@ -76,7 +76,6 @@ class Step3 extends React.Component {
                             <p className="helper-text"><b>Use SQL Batch Injection to check if anyone in the office has an affinity for almonds. Only use columns you absolutely need in your query please.</b></p>
                             <Hint hint={'We know the database is running SQLite, so you can use the "name" column of SQLite_master to get the list of tables.'}></Hint>
                             <Hint hint={'Make sure to only print out only the type="table" entries.'}></Hint>
-                            <p> {this.state.step} </p>
                             {loginSQL}
                             {queryResponse}
                             {table}
