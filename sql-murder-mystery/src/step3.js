@@ -19,74 +19,69 @@ class Step3 extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { isClicked: false, isQuerySuccessful: false, batchSqlCorrect: false, results: '', user_id: '', password: '' };
+        this.state = { isClicked: false, isSuccessful: false, batchSqlCorrect: false, step:0, results: '', user_id: '', password: '' };
 
         this.handleBatchQuerySuccess = this.handleBatchQuerySuccess.bind(this);
         this.processResults = this.processResults.bind(this);
+        this.advance = this.advance.bind(this);
     }
 
     handleBatchQuerySuccess(isSuccessful) {
         this.setState({ batchSqlCorrect: isSuccessful });
+        if (this.state.step < 1) {
+            this.setState({ step: 1 });
+        }
     }
 
     processResults(results) {
         this.setState({ results: results });
     }
 
-    render() {
-        let queryResponse, continueButton;
-        let loginSQL = <LoginSQL processResults={this.processResults} game_step='S3_B1' batchSqlCorrect={this.handleBatchQuerySuccess} congratsMessage="Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage="Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>;
-        let batchSQL1 = <Container>
-                <h5>Office Almond Snackers</h5>
-                <h6 className='sub-headers'> SQL Injection</h6>
-                <p className="helper-text"><b>Use SQL Batch Injection to check if anyone in the office has an affinity for almonds. Only use columns you absolutely need in your query please.</b></p>
-                <Hint hint={'Think back to the table, columns, and technique you used for your most recent SQL Injection.'}></Hint>
-                {loginSQL}
-            </Container>;
-        
-        if (this.state.isClicked && this.state.isQuerySuccessful) {
-            queryResponse = <div>
-                <p> Congratulations! You successfully bypassed authentication by using SQL Injection!
-                If a website's backend does not sanitize user input before using it in a SQL query,
-                you are able to "hijack" the query by placing a condition that is always true into
-                the query in order to bypass the intended programatic flow.
-				</p>
-            </div>;
-            continueButton = <Button variant="outline-primary float-right" href="/step4">Continue</Button>;
-        } else if (this.state.isClicked && !this.state.isQuerySuccessful) {
-            queryResponse = <div>
-                <p> Hmm, looks like your SQL Injection wasn't quite right. Please try again.
-                Remember, use the hint if you are stumped!
-				</p>
-            </div>;
-            continueButton = null;
+    advance() {
+        if (this.state.step < 2) {
+            this.setState({ step: 2 });
         }
+    }
+
+    render() {
+        let queryResponse = null, continueButton = null, table = null, nextButton = null;
+        let loginSQL = <LoginSQL processResults={this.processResults} game_step='S3_B1' batchSqlCorrect={this.handleBatchQuerySuccess} congratsMessage="Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage="Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>;
+
+        if (this.state.step == 1) {
+            nextButton = <Button variant="outline-primary float-center" onClick={this.advance}>Got it!</Button>;
+        } 
+        if (this.state.step > 0) {
+            queryResponse = <div>
+                <p> Logins do not directly output the results of thier queries to the front end, however they can be manipulated to do so using methods such as inducing errors, manipulating the outfile, sniffing, among many others. <br />
+                    Luckily many progams such as SQLMap and other will do this automatically. <br />
+                    The system being utilized here will do this automatically and just return the value of the second query made.
+				</p>
+                {nextButton}
+            </div>;
+        }
+        if (this.state.step > 1) {
+            table = <ResponseTable results={this.state.results} />;
+            continueButton = continueButton = <Button variant="outline-primary float-right" href="/step4">Continue</Button>;
+        }
+        
         return (
             <Container fluid='md'>
                 <h2 className='sub-headers'>Step Three: Figure out the table names</h2>
                 <p>In order to retrieve information from the database, you will need more information about the underlying database schema. <b>Use SQL injection to retrieve the names of the tables in the database.</b></p>
                 <Row className="justify-content-md-center">
                     <Col xs={8}>
-                        <Accordion className='hint'>
-                            <Card>
-                                <Accordion.Toggle as={Card.Header} eventKey="0">
-                                    Hint
-                </Accordion.Toggle>
-                                <Accordion.Collapse eventKey="0">
-                                    <Card.Body>Hint tbd... </Card.Body>
-                                </Accordion.Collapse>
-                            </Card>
-                        </Accordion>
+                        <Container>
+                            <h5>Table Names</h5>
+                            <h6 className='sub-headers'> SQL Injection</h6>
+                            <p className="helper-text"><b>Use SQL Batch Injection to check if anyone in the office has an affinity for almonds. Only use columns you absolutely need in your query please.</b></p>
+                            <Hint hint={'We know the database is running SQLite, so you can use the "name" column of SQLite_master to get the list of tables.'}></Hint>
+                            <Hint hint={'Make sure to only print out only the type="table" entries.'}></Hint>
+                            <p> {this.state.step} </p>
+                            {loginSQL}
+                            {queryResponse}
+                            {table}
+                        </Container>
                     </Col>
-                </Row>
-                <Row className="justify-content-md-center">
-                    <Col xs={8}>
-                        <p>form should go here eventually, but i don't want to mess with backend stuff just yet</p>
-                    </Col>
-                </Row>
-                <Row className="justify-content-md-center">
-                    {batchSQL1}
-                    <ResponseTable results={this.state.results} />
                 </Row>
                 <Button variant="outline-primary float-left" href="/step2" >Back</Button>
                 {continueButton}
