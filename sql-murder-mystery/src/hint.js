@@ -10,30 +10,30 @@ import 'bootstrap/dist/css/bootstrap.css';
 // Written by Lia Ferguson
 
 class Hint extends React.Component {
-  constructor (props) {
-    super(props);
-	}
-	
-  render(){
-    return(
-			<Container>
-      <Row className="justify-content-md-center">
-          <Col xs={8}>
-            <Accordion className='hint'>
-              <Card>
-                <Accordion.Toggle as={Card.Header} eventKey="0">
-                  Hint
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <Container>
+                <Row className="justify-content-md-center">
+                    <Col xs={8}>
+                        <Accordion className='hint'>
+                            <Card>
+                                <Accordion.Toggle as={Card.Header} eventKey="0">
+                                    Hint
                 </Accordion.Toggle>
-                <Accordion.Collapse eventKey="0">
-                  <Card.Body>{this.props.hint}</Card.Body>
-                </Accordion.Collapse>
-              </Card>
-            </Accordion>
-          </Col>
-        </Row>
-				</Container>
-    );
-  }
+                                <Accordion.Collapse eventKey="0">
+                                    <Card.Body>{this.props.hint}</Card.Body>
+                                </Accordion.Collapse>
+                            </Card>
+                        </Accordion>
+                    </Col>
+                </Row>
+            </Container>
+        );
+    }
 }
 
 export default Hint;

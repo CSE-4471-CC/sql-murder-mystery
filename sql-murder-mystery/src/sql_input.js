@@ -4,14 +4,14 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 class SQLInput extends React.Component {
-    constructor (props) {
-      super(props);
+    constructor(props) {
+        super(props);
     }
-  
-    render(){
-      return(
-        //   <Container fluid="md">
-              <Form>
+
+    render() {
+        return (
+            //   <Container fluid="md">
+            <Form>
                 <Form.Group controlId="query">
                     <Form.Label>Enter your SQL query below:</Form.Label>
                     <Form.Control type="sql" placeholder="..." />
@@ -24,9 +24,9 @@ class SQLInput extends React.Component {
                     {/* would want the input box cleared out on click */}
                 </Button>
             </Form>
-        //   </Container>
-      );
+            //   </Container>
+        );
     }
-  }
-  
-  export default SQLInput;
+}
+
+export default SQLInput;

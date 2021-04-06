@@ -31,10 +31,10 @@ export default class ResponseTable extends React.Component {
                 HTMLrows.push(<tr>{HTMLrow}</tr>);
                 ir += 1;
             });
-            sqltable =<table><tr>{header}</tr>{HTMLrows}</table>;
+            sqltable = <table><tr>{header}</tr>{HTMLrows}</table>;
         }
         return (
-            <div align='center'className="sqltable">
+            <div align='center' className="sqltable">
                 {sqltable}
             </div>
         )

@@ -7,11 +7,11 @@ import Container from 'react-bootstrap/Container';
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-//Written in HTML by Thomas Chmura and reactified by Andrew Fecher
+//Written in HTML by Thomas Chmura and reactified/edited by Andrew Fecher
 class Practice extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { query: '', queryResponse: '', sql1: '', sql1Response: '', sql2: '', sql2Response: ''}
+        this.state = { query: '', queryResponse: '', sql1: '', sql1Response: '', sql2: '', sql2Response: '' }
 
         this.handleQuery = this.handleQuery.bind(this);
         this.handleQueryChange = this.handleQueryChange.bind(this);
@@ -51,7 +51,6 @@ class Practice extends React.Component {
         else {
             this.setState({ sql2Response: 'try again' });
         }
-
     }
     handleSQL2Change(e) {
         e.preventDefault()
@@ -61,7 +60,7 @@ class Practice extends React.Component {
         return (
             <Container fluid='md'>
                 <h2 className='sub-headers'>Let's Practice!</h2>
-                <p>SQL Injection most often when a user is prompted for input on a piece of information, such as a User ID. Instead of putting in their ID, they would input a SQL Statement that runs through the systems database retrieves sensitive information.
+                <p>SQL Injection can occur when a user is prompted for input on a piece of information, such as a User ID. Instead of putting in their ID, they would input a SQL Statement that runs through the systems database retrieves sensitive information.
               Let's run through this process with a few simple practice problems so we can get your feet wet before we embark on the real challenge! </p>
                 <br />
                 <p>In the form below, we're going to retrieve the password information for "John Doe". In the "Username" slot, input the following SQL Query:
@@ -71,24 +70,24 @@ class Practice extends React.Component {
                     <Col xs={8}>
                         <Form>
                             <div align='center' className='login-form'>
-                                <h3 className='sub-headers'>Login</h3>
+                                <h3 className='sub-headers'>SQL Query</h3>
                                 <Form.Group controlId='username'>
-                                    <Form.Label className='login-labels'>User_ID</Form.Label>
+                                    <Form.Label className='login-labels'>Query</Form.Label>
                                     <Form.Control value={this.state.query} type='username' placeholder="Enter query here" onChange={this.handleQueryChange}></Form.Control>
                                 </Form.Group>
-                                <Button className='login-button' variant='primary' onClick={this.handleQuery}>Login</Button>
+                                <Button className='login-button' variant='primary' onClick={this.handleQuery}>Run Query</Button>
                                 <p> {this.state.queryResponse} </p>
                             </div>
                         </Form>
                     </Col>
                 </Row>
                 <br />
-                <p> Now lets see how we can utilize the above for SQL Injection. For example, if we want to login as the admin, we can use the fact that <br />
-                    are the first entries in the user database. So all we would need to do is to get the SQL statement above to return at least the admins information <br />
+                <p> Now lets see how we can utilize the above for SQL Injection. For example, if we want to login as the admin, we can use the fact that
+                    the admin is generallyfirst entry in the user database. So all we would need to do is to get the SQL statement above to return at least the admins information <br />
                     So, we know that the login will typically use something like: SELECT User_ID FROM Users WHERE User_ID = "$userID" AND Password = "$password" <br />
                     If we were to type in: " OR 1=1 -- in the user name space, the SQL query would look like... <br />
                     SELECT User_ID FROM Users WHERE User_ID = "" OR 1=1 --" AND Password = "$password"<br />
-                    Since -- is a comment and 1=1 is true, it will always return all users <br/>
+                    Since -- is a comment and 1=1 is true, it will always return all users <br />
                     <b>Type in : " OR 1=1 -- below to sql inject into the system! </b>
                 </p>
                 <Row className="justify-content-md-center">

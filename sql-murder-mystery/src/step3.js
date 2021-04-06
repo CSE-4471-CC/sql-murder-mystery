@@ -3,11 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Accordion from 'react-bootstrap/Accordion';
-import Card from 'react-bootstrap/Card';
-import Form from 'react-bootstrap/Form';
 import ResponseTable from './ResponseTable'
-import ListGroup from 'react-bootstrap/ListGroup';
 import LoginSQL from './loginsql';
 import Hint from './hint';
 import './Style.css';
@@ -19,7 +15,7 @@ class Step3 extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { isClicked: false, isSuccessful: false, batchSqlCorrect: false, step:0, results: '', user_id: '', password: '' };
+        this.state = { isClicked: false, isSuccessful: false, batchSqlCorrect: false, step: 0, results: '', user_id: '', password: '' };
 
         this.handleBatchQuerySuccess = this.handleBatchQuerySuccess.bind(this);
         this.processResults = this.processResults.bind(this);
@@ -49,7 +45,7 @@ class Step3 extends React.Component {
 
         if (this.state.step == 1) {
             nextButton = <Button variant="outline-primary float-center" onClick={this.advance}>Got it!</Button>;
-        } 
+        }
         if (this.state.step > 0) {
             queryResponse = <div>
                 <p> Logins do not directly output the results of thier queries to the front end, however they can be manipulated to do so using methods such as inducing errors, manipulating the outfile, sniffing, among many others. <br />
@@ -63,7 +59,7 @@ class Step3 extends React.Component {
             table = <ResponseTable results={this.state.results} />;
             continueButton = continueButton = <Button variant="outline-primary float-right" href="/step4">Continue</Button>;
         }
-        
+
         return (
             <Container fluid='md'>
                 <h2 className='sub-headers'>Step Three: Figure out the table names</h2>
