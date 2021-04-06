@@ -30,7 +30,7 @@
 - Practice React Component
 
 ### Thomas Chmura
-- Create SQL database
-- Import CSV files into database
-- Create practice round for game 
-- Aided backstory/plot elements
+- Created SQL database
+- Imported CSV files into database
+- Created practice round for game 
+- Aided with backstory/plot elements
