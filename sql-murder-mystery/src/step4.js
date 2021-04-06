@@ -10,6 +10,7 @@ import CardGroup from 'react-bootstrap/CardGroup';
 import Col from 'react-bootstrap/Col';
 import Hint from './hint';
 import LoginSQL from './loginsql';
+import ResponseTable from './ResponseTable';
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -18,12 +19,15 @@ class Step4 extends React.Component {
   constructor (props) {
     super(props);
 		this.state = {clickCorrectTable: false, clickCorrectQInfo: false,
-			batchSqlCorrect: false, correctQQ1: false, correctQQ2: false, batchSql2Correct: false};
+			batchSqlCorrect: false, correctQQ1: false, correctQQ2: false, batchSql2Correct: false,
+			results1: '', results2: ''};
 
 		this.handleClick = this.handleClick.bind(this);
 		this.handleCorrectChoice = this.handleCorrectChoice.bind(this);
 		this.handleBatchQuerySuccess = this.handleBatchQuerySuccess.bind(this);
 		this.handleBatchQuery2Success = this.handleBatchQuery2Success.bind(this);
+		this.processResults1 = this.processResults1.bind(this);
+		this.processResults2 = this.processResults2.bind(this);
   }
 
 	handleClick() {
@@ -52,6 +56,13 @@ class Step4 extends React.Component {
 		this.setState({batchSql2Correct: isSuccessful});
 	}
 
+	processResults1(results) {
+		this.setState({ results1: results });
+	}
+
+	processResults2(results) {
+		this.setState({ results2: results });
+	}
 
   render(){
 		const userQuestion = 'What is the best way to protect an application from SQL Injection?';
@@ -222,6 +233,7 @@ class Step4 extends React.Component {
 			let batchInjectInstructions = null;
 			let batchInjectSection = null;
 			let batchInjectFinal = null;
+			let table1 = null;
 			if(this.state.clickCorrectQInfo){
 				batchInjectInstructions = <div className="instruction-div">
 				<p className="helper-text"><b>CLUE:</b> The first and last name columns are named in snake case with only the first letter capitalized.</p>
@@ -230,8 +242,9 @@ class Step4 extends React.Component {
 				</div>;
 				batchInjectSection = <div>
 					<Hint hint={"Batch injection is performed by completing the expected query and ending it with a semi colon, and then typing another query following it that will retrieve the information you desire from the database."}></Hint>
-					<LoginSQL game_step = 'S4_B1' batchSqlCorrect={this.handleBatchQuerySuccess} congratsMessage = "Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage = "Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>
+					<LoginSQL game_step = 'S4_B1' processResults={this.processResults1} batchSqlCorrect={this.handleBatchQuerySuccess} congratsMessage = "Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage = "Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>
 					</div>
+					table1 = <ResponseTable results={this.state.results1} />;
 			}
 			let questionnaireBackground = null;
 			let questionnaireQuestions = null;
@@ -422,6 +435,7 @@ class Step4 extends React.Component {
 			}
 			let batchInjectInstructions2 = null;
 			let batchInjectSection2 = null;
+			let table2 = null;
 			if(this.state.correctQQ2){
 				batchInjectInstructions2 = <div className="instruction-div">
 				<p className="helper-text">Great! Now you have all of the information you need to find Tony's questionnaire information. </p>
@@ -430,8 +444,9 @@ class Step4 extends React.Component {
 				</div>;
 				batchInjectSection2 = <div>
 				<Hint hint={"Use the same SQL techniques you used for the first Batch Injection problem, just substitute in the QUESTIONNAIRE table information."}></Hint>
-				<LoginSQL game_step = 'S4_B2' batchSqlCorrect={this.handleBatchQuery2Success} congratsMessage = "Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage = "Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>
-				</div>
+				<LoginSQL game_step = 'S4_B2' processResults={this.processResults2} batchSqlCorrect={this.handleBatchQuery2Success} congratsMessage = "Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage = "Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>
+				</div>;
+				table2 = <ResponseTable results={this.state.results2} />;
 			}
 
 			let batchFileOutput = null;
@@ -533,11 +548,13 @@ class Step4 extends React.Component {
 				{userIdQuestion}
 				{batchInjectInstructions}
 				{batchInjectSection}
+				{table1}
 				{batchInjectFinal}
 				{questionnaireBackground}
 				{questionnaireQuestions}
 				{batchInjectInstructions2}
 				{batchInjectSection2}
+				{table2}
 				{batchFileOutput}
 				<Button variant="outline-primary float-left" href="/step3" >Back</Button>
 				{continueButton}
