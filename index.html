@@ -30,7 +30,26 @@
                 Each step of the game will require you to successfully execute SQL statements or prove your knowledge about SQL Injection to uncover clues that will help you to solve the unsolved murder of Tony Stark.
                 There will be helpful hints along the way if you need help with the task at hand. Good luck!</p>
               <h2>Practice</h2>
-              <p>tbd</p>
+              <p>SQL Injection most often when a user is prompted for input on a piece of information, such as a User ID. Instead of putting in their ID, they would input a SQL Statement that runs through the systems database retrieves sensitive information.
+              Let's run through this process with a simple practice problem so we can get your feet wet before we embark on the real challenge! </p>
+              </br>
+              <p>In the form below, we're going to retrieve the password information for "John Doe". In the "Username" slot, input the following SQL Query:</p>
+                  <b>SELECT Password FROM user_database WHERE name = 'John Doe'</b>  
+                </p>
+                <form>
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="username" class="form-control">
+                  </div>
+                  </br>
+                  <button type="button" class="btn btn-primary" onclick="sqlReveal()">Login</button>
+                </form>
+                </br>
+                <ul class="list-group" id="sql-output-reveal">
+                  <li class="list-group-item">Password = Password123</li>
+                </ul>
+                </br>
+                <p> <b>Good luck with the Mystery!</b></p> 
               <h2>Start Here: SQL Injection</h2>
               <p>
                   You now have Tony's computer, which you can use to view the database. There's only one problem: you do not know his password to access his private database. You can only think of one option to get access to his computer, SQL Injection! While it is a form of hacking, you deem it worthy in order to try to find out who murdered your friend, Tony. 
