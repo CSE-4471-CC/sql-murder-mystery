@@ -28,3 +28,9 @@
 - aided Backend support
 - First generation SQL Database CSV creation
 - Practice React Component
+
+### Thomas Chmura
+- Create SQL database
+- Import CSV files into database
+- Create practice round for game 
+- Aided backstory/plot elements
