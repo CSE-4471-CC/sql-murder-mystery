@@ -10,13 +10,14 @@ import CardGroup from 'react-bootstrap/CardGroup';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 
-//Julia Workum
-class Step2 extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { q1Correct: false, q2Correct: false, q3Correct: false, q4Correct: false, q5Correct: false, minutes: 2, seconds: 0 };
-        this.handleCorrectChoice = this.handleCorrectChoice.bind(this)
-    }
+// Written by Julia Workum
+
+class Step2 extends React.Component{
+  constructor (props) {
+    super(props);
+    this.state = {q1Correct: false, q2Correct: false, q3Correct: false, q4Correct: false, q5Correct: false, minutes: 2, seconds: 0};
+    this.handleCorrectChoice = this.handleCorrectChoice.bind(this)
+  }
 
     handleCorrectChoice(e) {
         switch (e.target.value) {

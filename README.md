@@ -28,3 +28,19 @@
 - aided Backend support
 - First generation SQL Database CSV creation
 - Practice React Component
+- Worked on the powerpoint, practiced presenting, attended meetings
+
+### Thomas Chmura
+- Created SQL database
+- Imported CSV files into database
+- Created practice round for game 
+- Aided with backstory/plot elements
+- Worked on the powerpoint, practiced presenting, attended meetings
+
+### Lia Ferguson
+- Worked on the powerpoint, practiced presenting, attended meetings
+
+### Julia Workum
+- Collaborated with Lia on Backstory.js, Rules.js, and Step1.js
+- Created Step2.js
+- Worked on the powerpoint, practiced presenting, attended meetings
