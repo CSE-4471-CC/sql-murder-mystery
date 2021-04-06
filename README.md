@@ -37,10 +37,10 @@
 - Aided with backstory/plot elements
 - Worked on the powerpoint, practiced, presenting, attended meetings
 
-## Lia Ferguson
+### Lia Ferguson
 - Worked on the powerpoint, practiced, presenting, attended meetings
 
-## Julia Workum
+### Julia Workum
 - Collaborated with Lia on Backstory.js, Rules.js, and Step1.js
 - Created Step2.js
 - Worked on the powerpoint, practiced, presenting, attended meetings
