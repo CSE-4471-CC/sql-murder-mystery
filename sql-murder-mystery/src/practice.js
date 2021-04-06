@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
+//Written in HTML by Thomas Chmura and reactified by Andrew Fecher
 class Practice extends React.Component {
     constructor(props) {
         super(props);
