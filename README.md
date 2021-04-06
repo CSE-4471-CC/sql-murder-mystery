@@ -13,7 +13,7 @@ This is a game where you use SQL Injection to find Tony Stark's Killer. Use your
 - Step3
 - ResponseTable
 - aided Backend support
-- First generation SQL Database CSV creation
+- First generation SQL Database CSV creation and Storyline maker
 - Practice React Component
 - Worked on the powerpoint, practiced presenting, attended meetings
 
