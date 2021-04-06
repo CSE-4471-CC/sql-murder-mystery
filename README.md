@@ -25,6 +25,6 @@
 ### Andrew Fecher
 - Step3
 - ResponseTable
-- Backend support
-- SQL Database CSV creation
-- Practice
+- aided Backend support
+- First generation SQL Database CSV creation
+- Practice React Component
