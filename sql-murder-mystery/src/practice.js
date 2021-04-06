@@ -1,14 +1,61 @@
 import React from 'react'
-import Container from 'react-bootstrap/Container'
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 class Practice extends React.Component {
     constructor(props) {
         super(props);
-    }
+        this.state = { query: '', queryResponse: '', sql1: '', sql1Response: '', sql2: '', sql2Response: ''}
 
+        this.handleQuery = this.handleQuery.bind(this);
+        this.handleQueryChange = this.handleQueryChange.bind(this);
+        this.handleSQL1 = this.handleSQL1.bind(this);
+        this.handleSQL1Change = this.handleSQL1Change.bind(this);
+        this.handleSQL2 = this.handleSQL2.bind(this);
+        this.handleSQL2Change = this.handleSQL2Change.bind(this);
+    }
+    handleQueryChange(e) {
+        e.preventDefault()
+        this.setState({ query: e.target.value });
+    }
+    handleQuery() {
+        if (this.state.query == 'SELECT Password FROM Users WHERE name = \'John Doe\'') {
+            this.setState({ queryResponse: 'This is an accurate query to get John Doe' });
+        }
+        else {
+            this.setState({ queryResponse: 'try again' });
+        }
+    }
+    handleSQL1() {
+        if (this.state.sql1 == '" OR 1=1 --') {
+            this.setState({ sql1Response: 'This is an accurate SQL Injection!' });
+        }
+        else {
+            this.setState({ sql1Response: 'try again' });
+        }
+    }
+    handleSQL1Change(e) {
+        e.preventDefault()
+        this.setState({ sql1: e.target.value });
+    }
+    handleSQL2() {
+        if (this.state.sql2 == '"; SELECT Computer_Number FROM Computers WHERE Name = \'John Doe\' --') {
+            this.setState({ sql2Response: 'This is an accurate SQL Batch Injection!' });
+        }
+        else {
+            this.setState({ sql2Response: 'try again' });
+        }
+
+    }
+    handleSQL2Change(e) {
+        e.preventDefault()
+        this.setState({ sql2: e.target.value });
+    }
     render() {
         return (
             <Container fluid='md'>
@@ -19,31 +66,68 @@ class Practice extends React.Component {
                 <p>In the form below, we're going to retrieve the password information for "John Doe". In the "Username" slot, input the following SQL Query:
                   <b>SELECT Password FROM Users WHERE name = 'John Doe'</b>
                 </p>
-                <Form>
-                        <Form.Group controlId="practice 1">
-                            <Form.Control type="sql" placeholder="..." />
-                        </Form.Group>
-                        <Button variant="primary" type="submit">
-                            Run
-                        </Button>
-                </Form>
+                <Row className="justify-content-md-center">
+                    <Col xs={8}>
+                        <Form>
+                            <div align='center' className='login-form'>
+                                <h3 className='sub-headers'>Login</h3>
+                                <Form.Group controlId='username'>
+                                    <Form.Label className='login-labels'>User_ID</Form.Label>
+                                    <Form.Control value={this.state.query} type='username' placeholder="Enter query here" onChange={this.handleQueryChange}></Form.Control>
+                                </Form.Group>
+                                <Button className='login-button' variant='primary' onClick={this.handleQuery}>Login</Button>
+                                <p> {this.state.queryResponse} </p>
+                            </div>
+                        </Form>
+                    </Col>
+                </Row>
                 <br />
-                <p>SQL Batch Injection can be utilitzed to manipulate data outside of the confines of the table used in the login. Multiple SQL statements are joined together in order to retrieve sensitive information for the database.
-                In the example below, we're going to retrieve information related to "John Doe" that exists in the same schema as the previous example, but within a different table that would be impossible to access via the usual login page.
+                <p> Now lets see how we can utilize the above for SQL Injection. For example, if we want to login as the admin, we can use the fact that <br />
+                    are the first entries in the user database. So all we would need to do is to get the SQL statement above to return at least the admins information <br />
+                    So, we know that the login will typically use something like: SELECT User_ID FROM Users WHERE User_ID = "$userID" AND Password = "$password" <br />
+                    If we were to type in: " OR 1=1 -- in the user name space, the SQL query would look like... <br />
+                    SELECT User_ID FROM Users WHERE User_ID = "" OR 1=1 --" AND Password = "$password"<br />
+                    Since -- is a comment and 1=1 is true, it will always return all users <br/>
+                    <b>Type in : " OR 1=1 -- below to sql inject into the system! </b>
+                </p>
+                <Row className="justify-content-md-center">
+                    <Col xs={8}>
+                        <Form>
+                            <div align='center' className='login-form'>
+                                <h3 className='sub-headers'>Login</h3>
+                                <Form.Group controlId='username'>
+                                    <Form.Label className='login-labels'>User_ID</Form.Label>
+                                    <Form.Control value={this.state.sql1} type='username' placeholder="Enter SQL Injection here" onChange={this.handleSQL1Change}></Form.Control>
+                                </Form.Group>
+                                <Button className='login-button' variant='primary' onClick={this.handleSQL1}>Login</Button>
+                                <p> {this.state.sql1Response} </p>
+                            </div>
+                        </Form>
+                    </Col>
+                </Row>
+                <p>SQL Batch Injection can be utilitzed to manipulate data outside of the confines of the table used in the login. Multiple SQL statements are joined together in order to retrieve sensitive information from the database.
+                In the example below, we're going to retrieve information related to "John Doe" that exists in the same schema as the previous example, but within a different table than the login Users table.
                  </p>
                 <br />
                 <p>The first SQL statement below is used to access the schema, while we retrieve the necessary server information with the second statement.Copy the combined statement into the following login box below:
                           <b>"; SELECT Computer_Number FROM Computers WHERE Name = 'John Doe' --
                           </b>
                 </p>
-                <form>
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="username" class="form-control" />
-                    </div>
-                    <br />
-                    <Button type="button" class="btn btn-primary" onclick={this.sqlBatchRevealPractice} > Login</Button >
-                </form >
+                <Row className="justify-content-md-center">
+                    <Col xs={8}>
+                        <Form>
+                            <div align='center' className='login-form'>
+                                <h3 className='sub-headers'>Login</h3>
+                                <Form.Group controlId='username'>
+                                    <Form.Label className='login-labels'>User_ID</Form.Label>
+                                    <Form.Control value={this.state.sql2} type='username' placeholder="Enter SQL Batch injection here" onChange={this.handleSQL2Change}></Form.Control>
+                                </Form.Group>
+                                <Button className='login-button' variant='primary' onClick={this.handleSQL2}>Login</Button>
+                                <p> {this.state.sql2Response} </p>
+                            </div>
+                        </Form>
+                    </Col>
+                </Row>
                 <br />
                 <br />
                 <p> <b>Good luck with the Mystery!</b></p>
