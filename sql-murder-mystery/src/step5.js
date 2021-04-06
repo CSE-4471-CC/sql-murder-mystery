@@ -11,6 +11,7 @@ import Hint from './hint';
 import Suspect from './suspect';
 import ResponseTable from './ResponseTable';
 
+// Written by Lia Ferguson
 const BACKEND_API_URL = 'http://127.0.0.1:5000/endpoints';
 
 class Step5 extends React.Component{

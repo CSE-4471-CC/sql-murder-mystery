@@ -16,6 +16,7 @@ import BuildingAccess from './building_access';
 import PaddedCell from './paddedcell';
 import TableList from './table_list';
 
+// Written by Lia Ferguson, Julia Workum, and Andrew Fecher
 ReactDOM.render(
   <React.StrictMode>
     <Router>

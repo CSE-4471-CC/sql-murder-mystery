@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
+// Written by Lia Ferguson
 
 class Hint extends React.Component {
   constructor (props) {

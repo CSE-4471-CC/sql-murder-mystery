@@ -5,6 +5,8 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
+
+// Written by Julia Workum and Lia Ferguson
 class Backstory extends React.Component {
   constructor (props) {
     super(props);

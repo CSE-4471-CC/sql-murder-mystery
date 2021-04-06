@@ -7,6 +7,8 @@ import Form from 'react-bootstrap/Form';
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
+// Written by Lia Ferguson
+
 const BACKEND_API_URL = 'http://127.0.0.1:5000/endpoints';
 
 class Suspect extends React.Component{
