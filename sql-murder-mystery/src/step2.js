@@ -14,14 +14,9 @@ import Popover from 'react-bootstrap/Popover';
 class Step2 extends React.Component{
   constructor (props) {
     super(props);
-    this.state = {clickGo: false, q1Correct: false, q2Correct: false, q3Correct: false, q4Correct: false, q5Correct: false, minutes: 2, seconds: 0};
-    this.handleClick = this.handleClick.bind(this);
+    this.state = {q1Correct: false, q2Correct: false, q3Correct: false, q4Correct: false, q5Correct: false, minutes: 2, seconds: 0};
     this.handleCorrectChoice = this.handleCorrectChoice.bind(this)
   }
-
-  handleClick() {
-		this.setState({clickGo: true});
-	}
 
   handleCorrectChoice(e) {
     switch(e.target.value) {
@@ -168,33 +163,10 @@ componentWillUnmount() {
     questionResponses5['D'] = 'Try again. Even if this was a characteristic of a honey pot, we this isn\'t something we did (as far as you know...)';
 
     const { minutes, seconds } = this.state
-    let startOverButton = null;
-    let goButton = <Button variant="primary" onClick={this.handleClick}>GO</Button> 
-    let timer = <h1>Time remaining: {minutes}:{seconds < 10 ? `0${seconds}` : seconds} </h1>
-    if(minutes === 0 && seconds === 0 && !this.state.q5Correct) {
-        timer = <h1>Times up!</h1>
-        this.state.clickGo = false;
-        this.state.q1Correct = false;
-        this.state.q2Correct = false;
-        this.state.q3Correct = false;
-        this.state.q4Correct = false;
-        this.state.q5Correct = false;
-        goButton = null;
-        startOverButton = 
-        <Container>
-          <Row className="justify-content-md-center"><h1>Times up!</h1></Row>
-          <Row className="justify-content-md-center"><Button variant="danger float-right" href="/step1">Start Over</Button></Row>
-        </Container>
-      } else if (minutes === 0 && seconds === 0 && this.state.q5Correct) {
-        timer = <Row className="justify-content-md-center"><h1>Success!</h1></Row>
-      }
 
-    let surpriseResponse, questionSetup1 = null;
-    if(this.state.clickGo) {
-      surpriseResponse = <div><p style={{marginTop: 16}}>Surprise! In the spirit of Dr. Jones' quizzes, you're being timed! You'll have 2 minutes to answer 5 questions pertaining to what we've learned this semester in CSE 4471.</p> <div className="helper-text"> {timer} </div></div>;
-      questionSetup1 =
-        <Container>
-          <Row className="justify-content-md-center">
+
+    let questionSetup1 = <Container>
+    <Row className="justify-content-md-center">
             {question1}
 					</Row>
           <Row className="justify-content-md-center">
@@ -277,8 +249,26 @@ componentWillUnmount() {
             </Card>
           </CardGroup>
           </Row>
+        </Container>;
+
+    let startOverButton = null;
+    let timer = <h1>Time remaining: {minutes}:{seconds < 10 ? `0${seconds}` : seconds} </h1>
+    if(minutes === 0 && seconds === 0 && !this.state.q5Correct) {
+        this.state.q1Correct = false;
+        this.state.q2Correct = false;
+        this.state.q3Correct = false;
+        this.state.q4Correct = false;
+        this.state.q5Correct = false;
+        questionSetup1 = null;
+        timer = null;
+        startOverButton = 
+        <Container>
+          <Row className="justify-content-md-center"><h1>Time's up!</h1></Row>
+          <Row className="justify-content-md-center"><Button variant="danger float-right" href="/step1">Start Over</Button></Row>
         </Container>
-    }
+      } else if (minutes === 0 && seconds === 0 && this.state.q5Correct) {
+        timer = <Row className="justify-content-md-center"><h1>Success!</h1></Row>
+      }
 
     let questionSetup2 = null;
     if(this.state.q1Correct) {
@@ -609,15 +599,12 @@ componentWillUnmount() {
     return(
       <Container fluid='md'>
         <h2 className='sub-headers'>Step Two: You're in!</h2>
-        <p>Congratulations, you're in! Now that you've bypassed Tony's user authentication system it's time to answer a few questions. <b>Click GO to begin answering questions.</b></p>
+        <p>Congratulations, you're in! Now that you've bypassed Tony's user authentication system it's time to answer a few questions. However, in the spirit of Dr. Jones' quizzes, you're being timed!<b> You'll have 2 minutes to answer 5 questions pertaining to what we've learned this semester in CSE 4471.</b></p>
         <Row className="justify-content-md-center">
           <Col xs={8}>
-            <div align="center">
-              {goButton}
-            </div>
+            <div className="helper-text"> {timer} </div>
           </Col>
         </Row>
-        {surpriseResponse}
         {startOverButton}
         {questionSetup1}
         {questionSetup2}
