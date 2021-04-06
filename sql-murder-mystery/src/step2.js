@@ -11,6 +11,8 @@ import CardGroup from 'react-bootstrap/CardGroup';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 
+// Written by Julia Workum
+
 class Step2 extends React.Component{
   constructor (props) {
     super(props);
