@@ -16,23 +16,19 @@ class Practice extends React.Component{
         <h2 className='sub-headers'>Let's Practice!</h2>
         <p>SQL Injection most often happens when a user is prompted for input on a piece of information, such as a User ID. Instead of putting in their ID, they would input a SQL Statement that runs through the systems database and retrieves sensitive information.
               Let's run through this process with a simple practice problem so we can get your feet wet before we embark on the real challenge! </p>
-              </br>
-              <p>In the form below, we're going to retrieve the password information for "John Doe". In the "Username" slot, input the following SQL Query:</p>
+              <p>In the form below, we're going to retrieve the password information for "John Doe". In the "Username" slot, input the following SQL Query:
                   <b>SELECT Password FROM user_database WHERE name = 'John Doe'</b>  
-                </p>
+              </p>
                 <form>
                   <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="username" class="form-control">
+                    <input type="username" class="form-control"></input>
                   </div>
-                  </br>
                   <button type="button" class="btn btn-primary" onclick="sqlReveal()">Login</button>
                 </form>
-                </br>
                 <ul class="list-group" id="sql-output-reveal">
                   <li class="list-group-item">Password = Password123</li>
                 </ul>
-                </br>
                 <p> <b>Good luck with the Mystery!</b></p>
         <Button variant="outline-primary float-left" href="/rules" >Back</Button>
         <Button variant="outline-primary float-right" href="/step1">Start Game!</Button>
