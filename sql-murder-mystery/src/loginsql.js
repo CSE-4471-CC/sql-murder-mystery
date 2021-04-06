@@ -6,7 +6,8 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
-
+// lines 40, 48-50 written by Andrew Fecher
+// all other code written by Lia Ferguson
 const BACKEND_API_URL = 'http://127.0.0.1:5000/endpoints';
 
 class LoginSQL extends React.Component {

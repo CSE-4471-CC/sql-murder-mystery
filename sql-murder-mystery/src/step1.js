@@ -10,6 +10,8 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
+// Written by Lia Ferguson and Julia Workum
+
 const BACKEND_API_URL = 'http://127.0.0.1:5000/endpoints';
 
 class Step1 extends React.Component{

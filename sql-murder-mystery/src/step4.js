@@ -14,6 +14,7 @@ import ResponseTable from './ResponseTable';
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
+// Written by Lia Ferguson
 
 class Step4 extends React.Component {
   constructor (props) {

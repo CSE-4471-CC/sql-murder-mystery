@@ -9,7 +9,7 @@ import Container from 'react-bootstrap/Container';
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-
+// Written by Lia Ferguson
 class PaddedCell extends React.Component {
   constructor (props) {
     super(props);

@@ -10,7 +10,7 @@ import Suspect from './suspect';
 import ConfirmSuspect from './confirmsuspect';
 import ResponseTable from './ResponseTable';
 
-
+//Written by Lia Ferguson
 const BACKEND_API_URL = 'http://127.0.0.1:5000/endpoints';
 
 class Step6 extends React.Component{

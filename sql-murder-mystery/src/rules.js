@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row'
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-
+//Written by Julia Workum and Lia Ferguson
 
 class Rules extends React.Component{
   constructor (props) {

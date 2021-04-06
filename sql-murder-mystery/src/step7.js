@@ -12,6 +12,7 @@ import Form from 'react-bootstrap/Form';
 import ResponseTable from './ResponseTable';
 import Modal from 'react-bootstrap/Modal';
 
+// Written by Lia Ferguson
 
 const BACKEND_API_URL = 'http://127.0.0.1:5000/endpoints';
 
