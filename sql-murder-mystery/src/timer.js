@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class Timer extends Component {
     state = {
-        minutes: 3,
+        minutes: 2,
         seconds: 0,
     }
 
@@ -32,12 +32,13 @@ export default class Timer extends Component {
         clearInterval(this.myInterval)
     }
 
+    
     render() {
         const { minutes, seconds } = this.state
         return (
             <div>
                 { minutes === 0 && seconds === 0
-                    ? <h1>Times up!</h1>
+                    ? <h1>Times up!</h1> 
                     : <h1>Time Remaining: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</h1>
                 }
             </div>
