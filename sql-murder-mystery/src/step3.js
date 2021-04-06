@@ -45,7 +45,7 @@ class Step3 extends React.Component {
 
     render() {
         let queryResponse = null, continueButton = null, table = null, nextButton = null;
-        let loginSQL = <LoginSQL processResults={this.processResults} game_step='S3_B1' batchSqlCorrect={this.handleBatchQuerySuccess} congratsMessage="Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage="Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>;
+        let loginSQL = <LoginSQL processResults={this.processResults} game_step='S3_B1' batchSqlCorrect={this.handleBatchQuerySuccess} congratsMessage="Congratulations, your SQL Injection was successful!" failureMessage="Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>;
 
         if (this.state.step == 1) {
             nextButton = <Button variant="outline-primary float-center" onClick={this.advance}>Got it!</Button>;
