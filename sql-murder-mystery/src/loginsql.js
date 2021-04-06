@@ -7,32 +7,28 @@ import Container from 'react-bootstrap/Container';
 import './Style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-
 const BACKEND_API_URL = 'http://127.0.0.1:5000/endpoints';
 
 class LoginSQL extends React.Component {
-	constructor (props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-		this.state = {isClicked: false, isQuerySuccessful: false, user_id: '', password: '', correctResults: false, errorMessage: ''};
+        this.state = { isClicked: false, isQuerySuccessful: false, user_id: '', password: '', results: '', correctResults: false, errorMessage: '' };
 
-		this.handleQuery = this.handleQuery.bind(this);
-		this.handleUserIdChange = this.handleUserIdChange.bind(this);
-		this.handlePasswordChange = this.handlePasswordChange.bind(this);
-	}
+        this.handleQuery = this.handleQuery.bind(this);
+        this.handleUserIdChange = this.handleUserIdChange.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    }
 
+    handleUserIdChange(e) {
+        e.preventDefault()
+        this.setState({ user_id: e.target.value });
+    }
 
-
-handleUserIdChange(e){
-	e.preventDefault()
-	this.setState({user_id: e.target.value});
-}
-
-handlePasswordChange(e){
-	e.preventDefault()
-	this.setState({password: e.target.value});
-}
-
+    handlePasswordChange(e) {
+        e.preventDefault()
+        this.setState({ password: e.target.value });
+    }
 
 
 async handleQuery(){
@@ -43,13 +39,14 @@ async handleQuery(){
 	this.setState({correctResults: correctResults});
 	this.setState({isClicked: true});
 	this.setState({errorMessage: response.error});
-
-	if(isQuerySuccessful && correctResults){
-		this.props.batchSqlCorrect(true);
-	} else {
-		this.props.batchSqlCorrect(false);
-	}
-	
+  if (isQuerySuccessful && correctResults) {
+    this.props.batchSqlCorrect(true);
+  } else {
+    this.props.batchSqlCorrect(false);
+  }
+  if (this.props.processResults != null) {
+    this.props.processResults(response.results);
+  }
 }
 
 async executeQuery(user_id, pwd, isQuerySuccessful){
@@ -86,31 +83,30 @@ async executeQuery(user_id, pwd, isQuerySuccessful){
 			</div>;
 			continueButton = null;
 		}
-
-    return(
-			<Container>
-			<Row className="justify-content-md-center">
-			<Col xs={8}>
-				<Form>
-					<div align='center' className='login-form'>
-					<h3 className='sub-headers'>Login</h3>
-					<Form.Group controlId='username'>
-						<Form.Label className='login-labels'>User_ID</Form.Label>
-						<Form.Control value={this.state.user_id} type='username' placeholder="Enter User_ID here" onChange={this.handleUserIdChange}></Form.Control>
-					</Form.Group>
-					<Form.Group controlId='password'>
-						<Form.Label className='login-labels' >Password</Form.Label>
-						<Form.Control value= {this.state.password} type='password' placeholder="Enter password here" onChange={this.handlePasswordChange} ></Form.Control>
-					</Form.Group>
-					<Button className = 'login-button' variant='primary' onClick = {this.handleQuery}>Login</Button>
-					{queryResponse}
-					</div>
-				</Form> 
-			</Col>	
-		</Row>
-		</Container>
-    );
-  }
+        return (
+            <Container>
+                <Row className="justify-content-md-center">
+                    <Col xs={8}>
+                        <Form>
+                            <div align='center' className='login-form'>
+                                <h3 className='sub-headers'>Login</h3>
+                                <Form.Group controlId='username'>
+                                    <Form.Label className='login-labels'>User_ID</Form.Label>
+                                    <Form.Control value={this.state.user_id} type='username' placeholder="Enter User_ID here" onChange={this.handleUserIdChange}></Form.Control>
+                                </Form.Group>
+                                <Form.Group controlId='password'>
+                                    <Form.Label className='login-labels' >Password</Form.Label>
+                                    <Form.Control value={this.state.password} type='password' placeholder="Enter password here" onChange={this.handlePasswordChange} ></Form.Control>
+                                </Form.Group>
+                                <Button className='login-button' variant='primary' onClick={this.handleQuery}>Login</Button>
+                                {queryResponse}
+                            </div>
+                        </Form>
+                    </Col>
+                </Row>
+            </Container>
+        );
+    }
 }
 
 export default LoginSQL;
