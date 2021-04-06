@@ -250,7 +250,9 @@ class Step4 extends React.Component {
 			let questionnaireQuestions = null;
 
 			if(this.state.batchSqlCorrect){
-				batchInjectFinal = <p className="helper-text">Well done! Now we know how to identify Tony's information in all of the database tables.</p>;
+				batchInjectFinal = <div className='text-under-table'>
+					<p className="helper-text">Well done! Now we know how to identify Tony's information in all of the database tables.</p>
+				</div>;
 				questionnaireBackground = <div>
 				<h5>Background</h5>
 				<p>
@@ -453,7 +455,7 @@ class Step4 extends React.Component {
 			let continueButton = null;
 			if(this.state.batchSql2Correct){
 				batchFileOutput = <div>
-					<p className="helper-text"> The output of this query was also saved in a text file called "Clues.txt" in the SQL-Mystery-Game-Files folder on your Desktop for future reference.</p>
+					<p className="text-under-table helper-text"> The output of this query was also saved in a text file called "Clues.txt" in the SQL-Mystery-Game-Files folder on your Desktop for future reference.</p>
 				</div>;
 				continueButton = <Button variant="outline-primary float-right" href="/step5">Continue</Button>;
 			}

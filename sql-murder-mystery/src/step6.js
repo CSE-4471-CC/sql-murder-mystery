@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import LoginSQL from './loginsql';
 import Suspect from './suspect';
 import ConfirmSuspect from './confirmsuspect';
+import ResponseTable from './ResponseTable';
 
 
 const BACKEND_API_URL = 'http://127.0.0.1:5000/endpoints';
@@ -17,7 +18,7 @@ class Step6 extends React.Component{
     super(props);
 
 		this.state = {batch1Correct: false, batch2Correct: false, batch3Correct: false, confirmSuspectCorrect: false,
-		suspect1Correct: false, suspect2Correct: false};
+		suspect1Correct: false, suspect2Correct: false, results1: '', results2: '', results3: ''};
 
 		this.handleBatch1Success = this.handleBatch1Success.bind(this);
 		this.handleBatch2Success = this.handleBatch2Success.bind(this);
@@ -25,6 +26,9 @@ class Step6 extends React.Component{
 		this.handleConfirmSuspect = this.handleConfirmSuspect.bind(this);
 		this.handleSuspect1Correct = this.handleSuspect1Correct.bind(this);
 		this.handleSuspect2Correct = this.handleSuspect2Correct.bind(this);
+		this.processResults1 = this.processResults1.bind(this);
+		this.processResults2 = this.processResults2.bind(this);
+		this.processResults3 = this.processResults3.bind(this);
   }
 
 	handleBatch1Success(){
@@ -51,25 +55,38 @@ class Step6 extends React.Component{
 		this.setState({suspect2Correct: isCorrect})
 	}
 
+	processResults1(results) {
+		this.setState({ results1: results });
+	}
+
+	processResults2(results) {
+		this.setState({ results2: results });
+	}
+
+	processResults3(results) {
+		this.setState({ results3: results });
+	}
   render(){
 		
-		let injection2, confirmSuspect = null;
+		let table1, injection2, confirmSuspect = null;
 		if(this.state.batch1Correct){
+			table1 = <ResponseTable results={this.state.results1} />;
 			injection2 = <Container>
 				<h5>Check Suspect Building Access</h5>
 				<p>Great! Now you have enough information to check when Natasha and Bruce entered the building. Remember, you have their User_ID's in your 'Clues.txt' file</p>
 				<h6 className='sub-headers'> SQL Injection 2</h6>
 				<p className='helper-text'><b>Use SQL Injection to find out what time Natasha and Bruce accessed the building on the day of Tony's death. Remember to return the User_ID column as well so you know who entered the building when!</b></p>
-				<LoginSQL game_step = 'S6_B2' batchSqlCorrect={this.handleBatch2Success} congratsMessage = "Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage = "Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>
+				<LoginSQL game_step = 'S6_B2' processResults={this.processResults2} batchSqlCorrect={this.handleBatch2Success} congratsMessage = "Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage = "Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>
 			</Container>;
-
 		}
 
+		let table2 = null;
 		if(this.state.batch2Correct){
+			table2 = <ResponseTable results={this.state.results2} />;
 			confirmSuspect = <ConfirmSuspect suspectConfirmCorrect = {this.handleConfirmSuspect}></ConfirmSuspect>;
 		}
 
-		let injection3 = null;
+		let injection3, table3 = null;
 		if(this.state.confirmSuspectCorrect){
 			injection3 = 	<Container>
 					<h5>New Suspect Building Access</h5>
@@ -77,14 +94,16 @@ class Step6 extends React.Component{
 						Looks like the lead on liking almonds wasn't quite as fruitful as we hoped. Let's pivot and find out who was in the building before Tony to gain our next round of suspects.</p> 
 					<h6 className='sub-headers'> SQL Injection 3</h6>
 					<p className='helper-text'><b>Use SQL Injection to find out who accessed the building before Tony. Remember, that would be anyone who entered the building before 11:30 am!</b></p>
-					<LoginSQL game_step = 'S6_B3' batchSqlCorrect={this.handleBatch3Success} congratsMessage = "Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage = "Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>
+					<LoginSQL game_step = 'S6_B3' processResults={this.processResults3} batchSqlCorrect={this.handleBatch3Success} congratsMessage = "Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage = "Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>
 				</Container>
+			table3 = <ResponseTable results={this.state.results3} />;
+
 		}
 			
 		let suspects = null;
 		if(this.state.batch3Correct){		
 			suspects = <Container>
-				<p className="helper-text">The outputs from the past three queries are saved in the Clues.txt file for future reference.</p>
+				<p className="text-under-table helper-text">The outputs from the past three queries are saved in the Clues.txt file for future reference.</p>
 				<h5>New Suspects</h5>
 				<p> A new lead! It looks like there are two employees who entered the building before Tony on the day he died.  </p>
 				<h6 className='sub-headers'> Declare Suspects</h6>
@@ -118,10 +137,13 @@ class Step6 extends React.Component{
 				<h6 className='sub-headers'> SQL Injection 1</h6>
 				<p className='helper-text'><b>Use Batch SQL Injection and the PRAGMA_TABLE_INFO function to determine the column names of the BUILDING_ACCESS table.</b></p>
 				<Hint hint={"Use any valid statement to finish the expected query. Use a SELECT statement with the PRAGMA function to find the column names. "}></Hint>
-				<LoginSQL game_step = 'S6_B1' batchSqlCorrect={this.handleBatch1Success} congratsMessage = "Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage = "Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>
+				<LoginSQL game_step = 'S6_B1' processResults={this.processResults1} batchSqlCorrect={this.handleBatch1Success} congratsMessage = "Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage = "Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>
+				{table1}
 				{injection2}
+				{table2}
 				{confirmSuspect}
 				{injection3}
+				{table3}
 				{suspects}
 				<Button variant="outline-primary float-left" href="/step5" >Back</Button>
 				{continueButton}

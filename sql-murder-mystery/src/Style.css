@@ -109,3 +109,7 @@ th, td {
 .center-text {
 	margin-left: 240px;
 }
+
+.text-under-table {
+	margin-top: 50px;
+}

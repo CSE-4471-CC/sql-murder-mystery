@@ -9,6 +9,7 @@ import LoginSQL from './loginsql';
 import TrojanModal from './trojanmodal';
 import Hint from './hint';
 import Suspect from './suspect';
+import ResponseTable from './ResponseTable';
 
 const BACKEND_API_URL = 'http://127.0.0.1:5000/endpoints';
 
@@ -17,13 +18,15 @@ class Step5 extends React.Component{
     super(props);
 
     this.state = {launchModal: false, continueClicked: false, renderBatch1: false,
-			 isClicked: false, batchSqlCorrect: false, suspect1Correct: false, suspect2Correct: false};
+			 isClicked: false, batchSqlCorrect: false, suspect1Correct: false, suspect2Correct: false,
+				results: ''};
 
 		this.handleFirstContinue = this.handleFirstContinue.bind(this);
 		this.launchModal = this.launchModal.bind(this);
 		this.handleBatchQuerySuccess = this.handleBatchQuerySuccess.bind(this);
 		this.handleSuspect1Correct = this.handleSuspect1Correct.bind(this);
 		this.handleSuspect2Correct = this.handleSuspect2Correct.bind(this);
+		this.processResults = this.processResults.bind(this);
   }
 
 	launchModal(){
@@ -49,6 +52,10 @@ class Step5 extends React.Component{
 		this.setState({suspect2Correct: isCorrect});
 	}
 
+	processResults(results) {
+		this.setState({ results: results });
+	}
+
   render(){
 		let firstContinueButton = <Button variant='primary' onClick={this.handleFirstContinue}>Continue</Button>;
 		if(this.state.continueClicked){
@@ -58,20 +65,22 @@ class Step5 extends React.Component{
 		if(this.state.launchModal){
 			modal = <TrojanModal show={true}></TrojanModal>;
 		}
-		let batchSQL1 = null;
+		let batchSQL1, table = null;
 		if(this.state.renderBatch1){
 			batchSQL1 = <Container>
 				<h5>Office Almond Snackers</h5>
 				<h6 className='sub-headers'> SQL Injection</h6>
 				<p  className="helper-text"><b>Use SQL Batch Injection to check if anyone in the office has an affinity for almonds. Only use columns you absolutely need in your query please.</b></p>
 				<Hint hint={'Think back to the table, columns, and technique you used for your most recent SQL Injection.'}></Hint>
-				<LoginSQL game_step = 'S5_B1' batchSqlCorrect={this.handleBatchQuerySuccess} congratsMessage = "Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage = "Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>
+				<LoginSQL game_step = 'S5_B1' processResults={this.processResults} batchSqlCorrect={this.handleBatchQuerySuccess} congratsMessage = "Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage = "Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>
 			</Container>;
+			table = <ResponseTable results={this.state.results} />;
+
 		}
 		let suspects = null;
 		if(this.state.batchSqlCorrect){
 			suspects = <Container>
-				<p className="helper-text">The output of your query will also be saved in the Clues.txt file for future reference.</p>
+				<p className=" text-under-table helper-text">The output of your query will also be saved in the Clues.txt file for future reference.</p>
 				<h5>Office Almond Snackers</h5>
 				<p>It looks like there are two almond snackers in the office. Perhaps one of them snapped and weaponized their favorite snack against Tony? You need more information about them in order to add them to your official suspect list.  </p>
 				<h6 className='sub-headers'> Declare Suspects</h6>
@@ -97,6 +106,7 @@ class Step5 extends React.Component{
 					{firstContinueButton}
 				</Row>
 				{batchSQL1}
+				{table}
 				{suspects}
 				<Button variant="outline-primary float-left" href="/step4" >Back</Button>
 				{secContinueButton}
