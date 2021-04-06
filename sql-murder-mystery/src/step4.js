@@ -236,7 +236,7 @@ class Step4 extends React.Component {
 			let table1 = null;
 			if(this.state.clickCorrectQInfo){
 				batchInjectInstructions = <div className="instruction-div">
-				<p className="helper-text"><b>CLUE:</b> The first and last name columns are named in snake case with only the first letter capitalized.</p>
+				<p className="helper-text"><b>CLUE:</b> The names of the columns you will need are: User_ID, First_name, Last_name</p>
 				<h6 className="sub-headers"> SQL Injection</h6>
 				<p className="helper-text"><b>Use Batch SQL Injection to retrieve all name and User ID records from the USER_INFO table. Make special note of Tony's ID. </b></p>
 				</div>;
