@@ -20,3 +20,11 @@
   - develop lightweight API to allow us to communicate results of SQL Injection from backend to frontend react app (if this option is used)
 - decide on method for frontend
   - use plain HTML or proceed with react app
+
+## Workloads:
+### Andrew Fecher
+- Step3
+- ResponseTable
+- Backend support
+- SQL Database CSV creation
+- Practice
