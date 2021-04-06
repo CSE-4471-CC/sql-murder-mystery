@@ -60,7 +60,7 @@ class Practice extends React.Component {
         return (
             <Container fluid='md'>
                 <h2 className='sub-headers'>Let's Practice!</h2>
-                <p>SQL Injection can occur when a user is prompted for input on a piece of information, such as a User ID. Instead of putting in their ID, they would input a SQL Statement that runs through the systems database retrieves sensitive information.
+                <p>SQL Injection can occur when a user is prompted for input on a piece of information, such as a User ID. Instead of putting in their ID, they would input a SQL Statement that runs through the systems database and retrieves sensitive information.
               Let's run through this process with a few simple practice problems so we can get your feet wet before we embark on the real challenge! </p>
                 <br />
                 <p>In the form below, we're going to retrieve the password information for "John Doe". In the "Username" slot, input the following SQL Query:
@@ -83,7 +83,7 @@ class Practice extends React.Component {
                 </Row>
                 <br />
                 <p> Now lets see how we can utilize the above for SQL Injection. For example, if we want to login as the admin, we can use the fact that
-                    the admin is generallyfirst entry in the user database. So all we would need to do is to get the SQL statement above to return at least the admins information <br />
+                    the admin is generally the first entry in the user database. All we would need to do is get the SQL statement above to return at least the admin's information <br />
                     So, we know that the login will typically use something like: SELECT User_ID FROM Users WHERE User_ID = "$userID" AND Password = "$password" <br />
                     If we were to type in: " OR 1=1 -- in the user name space, the SQL query would look like... <br />
                     SELECT User_ID FROM Users WHERE User_ID = "" OR 1=1 --" AND Password = "$password"<br />
@@ -109,7 +109,7 @@ class Practice extends React.Component {
                 In the example below, we're going to retrieve information related to "John Doe" that exists in the same schema as the previous example, but within a different table than the login Users table.
                  </p>
                 <br />
-                <p>The first SQL statement below is used to access the schema, while we retrieve the necessary server information with the second statement.Copy the combined statement into the following login box below:
+                <p>The first SQL statement below is used to access the schema, while we retrieve the necessary server information with the second statement. Copy the combined statement into the login box below:
                           <b>"; SELECT Computer_Number FROM Computers WHERE Name = 'John Doe' --
                           </b>
                 </p>
