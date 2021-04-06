@@ -10,6 +10,8 @@ import Step2 from './step2';
 import Step3 from './step3';
 import Step4 from './step4';
 import Step5 from './step5';
+import Step6 from './step6';
+import Step7 from './step7';
 import BuildingAccess from './building_access';
 import PaddedCell from './paddedcell';
 import TableList from './table_list';
@@ -49,6 +51,12 @@ ReactDOM.render(
 				</Route>
 				<Route path='/paddedcell'>
 					<PaddedCell/>
+				</Route>
+				<Route path='/step6'>
+					<Step6/>
+				</Route>
+				<Route path='/step7'>
+					<Step7/>
 				</Route>
       </Switch>
     </div>

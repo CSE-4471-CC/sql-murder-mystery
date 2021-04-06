@@ -33,6 +33,8 @@ handlePasswordChange(e){
 	this.setState({password: e.target.value});
 }
 
+
+
 async handleQuery(){
 	var response = await this.executeQuery(this.state.user_id, this.state.password);
 	var isQuerySuccessful = response.isQuerySuccessful == 'true' ? true : false;
@@ -78,7 +80,7 @@ async executeQuery(user_id, pwd, isQuerySuccessful){
 			continueButton = <Button variant="outline-primary float-right" href="/step2">Continue</Button>;
 		} else if (this.state.isClicked && (!this.state.isQuerySuccessful || !this.state.correctResults)){
 			queryResponse = <div className="instruction-div">
-				<p  className="helper-text"> 
+				<p> 
 					{this.state.errorMessage}
 				</p>
 			</div>;
