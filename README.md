@@ -13,6 +13,8 @@ This is a game where you use SQL Injection to find Tony Stark's Killer. Use your
 - run command `npm install` to install relevant dependencies for app
 - run command `npm start ` to launch app
 
+Make sure to run the Back end application as well!
+
 ## Workloads:
 ### Andrew Fecher
 - Step3
