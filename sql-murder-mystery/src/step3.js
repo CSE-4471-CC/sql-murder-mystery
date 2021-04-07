@@ -48,7 +48,7 @@ class Step3 extends React.Component {
         }
         if (this.state.step > 0) {
             queryResponse = <div>
-                <p> Logins do not directly output the results of thier queries to the front end, however they can be manipulated to do so using methods such as inducing errors, manipulating the outfile, sniffing, among many others. <br />
+                <p> Logins do not directly output the results of their queries to the front end, however they can be manipulated to do so using methods such as inducing errors, manipulating the outfile, sniffing, among many others. <br />
                     Luckily many progams such as SQLMap and other will do this automatically. <br />
                     The system being utilized here will do this automatically and just return the value of the second query made.
 				</p>

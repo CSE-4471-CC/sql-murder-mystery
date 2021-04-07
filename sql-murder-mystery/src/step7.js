@@ -192,7 +192,7 @@ class Step7 extends React.Component {
 				</p>
                 <h6 className='sub-headers'> SQL Injection 1</h6>
                 <p className='helper-text'><b>Use Batch SQL Injection to return all columns and records for your suspects from the PURCHASE_ORDERS table.</b></p>
-                <Hint hint={"Use any valid statement to finish the expected query. Use a SELECT statement with the PRAGMA function to find the column names. "}></Hint>
+                <Hint hint={"Use * to return all columns and remember that User_ID identifies all data for a person in the database!"}></Hint>
                 <LoginSQL game_step='S7_B1' processResults={this.processResults1} batchSqlCorrect={this.handleBatch1Success} congratsMessage="Congratulations, your SQL Injection was successful! Here are the results of your query:" failureMessage="Hmm it doesn't look like your Injection Query was successful. Please try again."></LoginSQL>
                 {table1}
                 {suspect}
